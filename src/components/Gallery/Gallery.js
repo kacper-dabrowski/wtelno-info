@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import { CenteredSpinner, StyledTileContainer } from './StyledGallery';
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
 import AlbumLink from './AlbumLink/AlbumLink';
 import Album from './Album';
+import useRequest from '../../shared/hooks/useRequest';
 
 const Gallery = ({ fetchUrl, baseUrl, mediaUrl }) => {
-    const [hasError, setHasError] = useState(false);
-    const [albums, setAlbums] = useState(null);
+    const [response, loading, error] = useRequest(fetchUrl, 'GET');
 
-    useEffect(() => {
-        const onFetchAlbums = async () => {
-            try {
-                const fetchedMedia = await axios.get(fetchUrl);
-                setAlbums(fetchedMedia.data);
-            } catch (error) {
-                setHasError(true);
-            }
-        };
-        onFetchAlbums();
-    }, [fetchUrl]);
+    const albums = response?.data;
 
-    if (hasError) {
+    if (error) {
         return (
             <>
                 <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
             </>
         );
     }
+
+    if (loading) {
+        return (
+            <Container>
+                <MainHeader>Dostępne galerie:</MainHeader>
+                <CenteredSpinner size="100px" />
+            </Container>
+        );
+    }
+
     let renderedMedia = null;
     let renderedPaths = null;
     if (albums && albums.length > 0) {
@@ -61,11 +60,6 @@ const Gallery = ({ fetchUrl, baseUrl, mediaUrl }) => {
                 {renderedMedia}
                 <Route path={baseUrl} exact>
                     <MainHeader>Dostępne galerie:</MainHeader>
-                    {!albums ? (
-                        <Container>
-                            <CenteredSpinner size="100px" />
-                        </Container>
-                    ) : null}
                     <StyledTileContainer>{renderedPaths}</StyledTileContainer>
                 </Route>
             </Switch>
