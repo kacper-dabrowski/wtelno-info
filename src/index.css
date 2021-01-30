@@ -15,6 +15,9 @@ body {
     position: relative;
 }
 
+ol {
+    width: 100%;
+}
 #SRLLightbox {
     z-index: 1;
 }

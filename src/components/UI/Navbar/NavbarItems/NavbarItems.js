@@ -23,6 +23,7 @@ const navbarItems = ({ toggleSidedrawer }) => {
                 title: 'Galeria parafialna',
                 path: paths.church.churchGallery,
             },
+            { title: 'Regulamin cmentarza', path: paths.church.churchTerms },
         ],
     };
 
