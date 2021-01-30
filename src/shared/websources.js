@@ -1,5 +1,5 @@
 const websources = {
-    STRAPI_CMS_URL: process.env.NODE_ENV === 'production' ? 'https://wtelno.tk' : 'http://localhost:1337',
+    STRAPI_CMS_URL: process.env.NODE_ENV === 'production' ? 'https://wtelno.tk' : 'https://wtelno.tk',
     PHOTOS_API_URL:
         process.env.NODE_ENV === 'production'
             ? 'https://utils-api.herokuapp.com/api/photos/transform'
