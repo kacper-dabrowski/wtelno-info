@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { ClipLoader } from 'react-spinners';
 import markdownConfig from '../../../shared/markdownConfig';
 import {
     Container,
@@ -10,95 +8,68 @@ import {
     MainHeader,
     SecondaryHeader,
 } from '../../../components/UniversalStyles/ArticleStyles';
-
-import PersonCard from '../../../components/Card/PersonCard';
 import HolyMassInfo from './HolyMassInfo';
 import PaymentInfo from '../PaymentInfo';
 import websources from '../../../shared/websources';
-import photoApiCall from '../../../shared/utils/photoApi';
+import useRequest from '../../../shared/hooks/useRequest';
+import CurrentParsonCard from './CurrentParsonCard';
+import { CenteredSpinner } from '../../../components/Gallery/StyledGallery';
 
-class ChurchInfo extends Component {
-    state = {
-        parsonInfo: null,
-        importantDates: null,
-        holyMasses: {},
-    };
+const ChurchInfo = () => {
+    const [importantDates, importantDatesLoading, importantDatesError] = useRequest(
+        `${websources.STRAPI_CMS_URL}/important-date`,
+        'GET'
+    );
+    const [pages, pagesLoading, pagesError] = useRequest(`${websources.STRAPI_CMS_URL}/pages`, 'GET');
+    const [parsonInfo, parsonInfoLoading, parsonInfoError] = useRequest(`${websources.STRAPI_CMS_URL}/parson`, 'GET');
+    const [holyMassInfo, holyMassInfoLoading, holyMassError] = useRequest(
+        `${websources.STRAPI_CMS_URL}/holy-mass`,
+        'GET'
+    );
 
-    async componentDidMount() {
-        try {
-            const responseWithContent = await axios.all([
-                axios.get(`${websources.STRAPI_CMS_URL}/parson`),
-                axios.get(`${websources.STRAPI_CMS_URL}/important-date`),
-                axios.get(`${websources.STRAPI_CMS_URL}/holy-mass`),
-                axios.get(`${websources.STRAPI_CMS_URL}/pages`),
-            ]);
-            const [fetchedParsonInfo, fetchedImportantDates, fetchedHolyMasses, fetchedContent] = responseWithContent;
+    const pageData = pages?.data?.find?.((page) => page.name === 'parafia');
+    const parsonData = parsonInfo?.data?.parson?.[0];
 
-            const pageData = fetchedContent.data.find((page) => page.name === 'parafia');
+    const errorsArray = [importantDatesError, pagesError, parsonInfoError, holyMassError];
+    const loadingArray = [importantDatesLoading, pagesLoading, parsonInfoLoading, holyMassInfoLoading];
+    const hasError = errorsArray.some((error) => error);
 
-            const parsonInfo = fetchedParsonInfo.data.parson[0];
-            const convertedData = await Promise.all([
-                photoApiCall(parsonInfo.email),
-                photoApiCall(parsonInfo.telephoneNumber),
-            ]);
-            const [parsonMail, parsonTelephoneNumber] = convertedData;
-            parsonInfo.email = parsonMail;
-            parsonInfo.telephoneNumber = parsonTelephoneNumber;
-
-            this.setState({
-                parsonInfo,
-                importantDates: fetchedImportantDates.data,
-                holyMasses: fetchedHolyMasses.data,
-                pageData,
-            });
-        } catch (error) {
-            this.setState({ hasError: true });
-        }
+    if (hasError) {
+        return <h2>Coś poszło nie tak...</h2>;
     }
 
-    render() {
-        const { parsonInfo, importantDates, holyMasses, pageData, hasError } = this.state;
-        if (hasError) {
-            return (
-                <Container>
-                    <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
-                </Container>
-            );
-        }
-        const isPageLoaded = parsonInfo && importantDates && holyMasses && pageData;
+    const isPageLoading = loadingArray.some((loading) => loading);
 
-        if (!isPageLoaded) {
-            return (
-                <Container>
-                    <MainHeader>Parafia pw. św. Michała Archanioła</MainHeader>
-                    <ClipLoader size="100px" />
-                </Container>
-            );
-        }
-
-        const importantDatesElements = importantDates.date.map(({ name, date, _id }) => (
-            <li key={_id}>
-                <Highlight>{name}</Highlight>
-                {date}
-            </li>
-        ));
-        const currentParson = parsonInfo;
-
+    if (isPageLoading) {
         return (
             <Container>
-                <MainHeader>Parafia pw. św. Michała Archanioła</MainHeader>
-                <SecondaryHeader>ul.Kościelna 2, 86-011 Wtelno</SecondaryHeader>
-                <PersonCard {...currentParson} />
-                <SecondaryHeader>Msze Święte:</SecondaryHeader>
-                <HolyMassInfo massesPlan={holyMasses} />
-                <SecondaryHeader>Dane parafialnego konta bankowego</SecondaryHeader>
-                <PaymentInfo />
-                <SecondaryHeader>Za wszelkie ofiary składamy serdeczne: Bóg zapłać!</SecondaryHeader>
-                <SecondaryHeader>Ważne daty</SecondaryHeader>
-                <KeyValueList>{importantDatesElements}</KeyValueList>
-                <ReactMarkdown {...markdownConfig} source={pageData.content} />
+                <CenteredSpinner size="100px" />
             </Container>
         );
     }
-}
-export default ChurchInfo;
+
+    const importantDatesElements = importantDates?.data?.date?.map?.(({ name, date, _id }) => (
+        <li key={_id}>
+            <Highlight>{name}</Highlight>
+            {date}
+        </li>
+    ));
+
+    return (
+        <Container>
+            <MainHeader>Parafia pw. św. Michała Archanioła</MainHeader>
+            <SecondaryHeader>ul.Kościelna 2, 86-011 Wtelno</SecondaryHeader>
+            <CurrentParsonCard parsonData={parsonData} />
+            <SecondaryHeader>Msze Święte:</SecondaryHeader>
+            <HolyMassInfo massesPlan={holyMassInfo?.data} />
+            <SecondaryHeader>Dane parafialnego konta bankowego</SecondaryHeader>
+            <PaymentInfo />
+            <SecondaryHeader>Za wszelkie ofiary składamy serdeczne: Bóg zapłać!</SecondaryHeader>
+            <SecondaryHeader>Ważne daty</SecondaryHeader>
+            <KeyValueList>{importantDatesElements}</KeyValueList>
+            <ReactMarkdown {...markdownConfig} source={pageData?.content} />
+        </Container>
+    );
+};
+
+export default React.memo(ChurchInfo);
