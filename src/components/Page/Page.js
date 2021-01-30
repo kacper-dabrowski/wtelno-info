@@ -1,39 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
-
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
 import markdownConfig from '../../shared/markdownConfig';
 import websources from '../../shared/websources';
+import useRequest from '../../shared/hooks/useRequest';
 
 const Page = ({ pageName }) => {
-    const [pageData, setPageData] = useState(null);
-    const [hasError, setHasError] = useState(false);
+    const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/pages`, 'GET');
 
-    useEffect(() => {
-        const fetchPageData = async () => {
-            try {
-                const strapiContent = await axios.get(`${websources.STRAPI_CMS_URL}/pages`);
-                const pages = strapiContent.data;
-                const thisPage = pages.find((page) => page.name === pageName);
+    const currentPage = response?.data?.find?.((page) => page.name === pageName);
 
-                setPageData(thisPage);
-            } catch (error) {
-                setHasError(true);
-            }
-        };
-        fetchPageData();
-    }, [pageName]);
-
-    if (hasError) {
+    if (error) {
         return (
             <Container>
                 <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
             </Container>
         );
     }
-    if (!pageData) {
+    if (loading) {
         return (
             <Container>
                 <ClipLoader size="100px" />
@@ -42,8 +27,8 @@ const Page = ({ pageName }) => {
     }
     return (
         <Container>
-            <MainHeader>{pageData.title}</MainHeader>
-            <ReactMarkdown {...markdownConfig} source={pageData.content} />
+            <MainHeader>{currentPage.title}</MainHeader>
+            <ReactMarkdown {...markdownConfig} source={currentPage.content} />
         </Container>
     );
 };
