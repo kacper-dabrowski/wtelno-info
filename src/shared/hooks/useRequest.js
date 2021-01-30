@@ -7,7 +7,7 @@ const fetchData = async (url, method, data, setLoading, setResponseData) => {
     setLoading(false);
 };
 
-const useRequest = (url, method, data = {}) => {
+const useRequest = (url, method, data = null) => {
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
