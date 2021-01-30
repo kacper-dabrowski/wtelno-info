@@ -1,10 +1,17 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const fetchData = async (url, method, data, setLoading, setResponseData) => {
-    const response = await axios({ url, method, data });
-    setResponseData(response);
-    setLoading(false);
+const fetchData = async (requestConfig, setLoading, setResponseData, setError) => {
+    try {
+        const { url, method, data } = requestConfig;
+        setError(false);
+        setLoading(true);
+        const response = await axios({ url, method, data, headers: { 'Content-Type': 'application/json' } });
+        setResponseData(response);
+        setLoading(false);
+    } catch (error) {
+        setError(error);
+    }
 };
 
 const useRequest = (url, method, data = null) => {
@@ -12,13 +19,15 @@ const useRequest = (url, method, data = null) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const { current: requestConfig } = useRef({
+        data,
+        method,
+        url,
+    });
+
     useEffect(() => {
-        try {
-            fetchData(url, method, data, setLoading, setResponse);
-        } catch (err) {
-            setError(err);
-        }
-    }, [url, method, data]);
+        fetchData(requestConfig, setLoading, setResponse, setError);
+    }, [requestConfig]);
 
     return [response, loading, error];
 };
