@@ -1,10 +1,4 @@
-import {
-    Paragraph,
-    Highlight,
-    SecondaryHeader,
-    ArticleList,
-    ArticleImage,
-} from '../components/UniversalStyles/ArticleStyles';
+import { Paragraph, Highlight, SecondaryHeader, ArticleImage } from '../components/UniversalStyles/ArticleStyles';
 
 const markdownConfig = {
     escapeHtml: false,
@@ -12,7 +6,6 @@ const markdownConfig = {
         paragraph: Paragraph,
         heading: SecondaryHeader,
         strong: Highlight,
-        list: ArticleList,
         image: ArticleImage,
         imageReference: ArticleImage,
     },

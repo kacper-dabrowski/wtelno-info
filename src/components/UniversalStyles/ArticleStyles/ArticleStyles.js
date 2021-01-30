@@ -21,6 +21,7 @@ export const Container = styled.div`
 `;
 
 export const Paragraph = styled.p`
+    width: 100%;
     font-size: 1rem;
     text-align: justify;
     padding: 0.5rem;

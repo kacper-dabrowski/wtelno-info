@@ -8,6 +8,7 @@ const paths = {
         churchInfo: '/parafia',
         churchGallery: '/parafia/galeria-parafialna',
         churchAnnouncements: '/parafia/ogloszenia',
+        churchTerms: '/parafia/regulamin-cmentarza',
     },
     history: '/historia',
     news: '/aktualnosci',

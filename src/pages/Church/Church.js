@@ -5,6 +5,7 @@ import ChurchInfo from './ChurchInfo';
 import Gallery from '../../components/Gallery';
 import paths from '../../shared/paths';
 import websources from '../../shared/websources';
+import ChurchTerms from './ChurchTerms/ChurchTerms';
 
 const church = () => {
     return (
@@ -14,6 +15,9 @@ const church = () => {
             </Route>
             <Route path={paths.church.churchAnnouncements} exact>
                 <ChurchAnnouncements />
+            </Route>
+            <Route path={paths.church.churchTerms} exact>
+                <ChurchTerms />
             </Route>
             <Route path={paths.church.churchGallery}>
                 <Gallery
