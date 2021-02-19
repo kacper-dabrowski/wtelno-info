@@ -16,5 +16,5 @@ const paths = {
     contact: '/kontakt',
     notFound: '/nie-znaleziono-strony',
 };
-export const recognizePath = (pathname) => window.location.pathname.includes(pathname);
+
 export default paths;
