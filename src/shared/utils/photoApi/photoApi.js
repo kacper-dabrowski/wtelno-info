@@ -4,7 +4,7 @@ import websources from '../../websources';
 const getPhotoData = async (text, options) => {
     const response = await axios.post(websources.PHOTOS_API_URL, { text, options });
 
-    if (response.status !== 200) {
+    if (response.status !== 200 || !response?.data?.photo) {
         throw new Error('Photo request failed');
     }
     const photoUrl = `data:image/png;base64,${response.data.photo}`;
