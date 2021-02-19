@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
 import websources from '../../shared/websources';
 import markdownConfig from '../../shared/markdownConfig';
-import { fetchStrapiContent } from '../../shared/utils/strapiConent';
 
 import { Container, MainHeader } from '../../components/UniversalStyles/ArticleStyles';
 import HistoryCard from '../../components/Card/HistoryCard';
+import useRequest from '../../shared/hooks/useRequest';
 
 const History = () => {
-    const [pageData, setPageData] = useState(null);
-    const [hasError, setHasError] = useState(false);
+    const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/history`);
 
-    useEffect(() => {
-        fetchStrapiContent('history', setPageData, setHasError);
-    }, []);
+    const pageData = response?.data;
 
-    if (hasError) {
+    if (error) {
         return (
             <Container>
                 <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
@@ -24,12 +21,16 @@ const History = () => {
         );
     }
 
-    if (!pageData) {
+    if (loading) {
         return (
             <Container>
                 <ClipLoader size="100px" />
             </Container>
         );
+    }
+
+    if (!pageData) {
+        return <Container />;
     }
 
     const peopleCards =

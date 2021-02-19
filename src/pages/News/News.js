@@ -1,37 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { ClipLoader } from 'react-spinners';
 import { MainHeader, Container } from '../../components/UniversalStyles/ArticleStyles';
 import NewsContainer from '../../components/NewsContainer';
 import FullPost from '../../components/NewsContainer/FullPost';
-import { fetchStrapiContent } from '../../shared/utils/strapiConent';
+import useRequest from '../../shared/hooks/useRequest';
+import websources from '../../shared/websources';
 
 const News = () => {
-    const [pageData, setPageData] = useState(null);
-    const [hasError, setHasError] = useState(false);
+    const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/events`);
 
-    useEffect(() => {
-        const fetchPageData = async () => {
-            try {
-                const fetchedNews = await fetchStrapiContent('events');
-
-                setPageData(fetchedNews.reverse());
-            } catch (error) {
-                setHasError(true);
-            }
-        };
-        fetchPageData();
-    }, []);
-
-    if (hasError) {
+    const pageData = response?.data;
+    if (error) {
         return (
             <Container>
                 <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
             </Container>
         );
     }
-    if (!pageData) {
+    if (loading) {
         return (
             <Container>
                 <MainHeader>Aktualności</MainHeader>

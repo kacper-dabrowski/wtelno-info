@@ -38,4 +38,4 @@ const CurrentParsonCard = ({ parsonData }) => {
     return <PersonCard {...convertedParsonData} />;
 };
 
-export default React.memo(CurrentParsonCard, (prevProps, nextProps) => console.log(prevProps, '<>', nextProps));
+export default React.memo(CurrentParsonCard);
