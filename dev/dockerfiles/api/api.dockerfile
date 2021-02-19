@@ -12,5 +12,6 @@ RUN cd ./strapi-wtelno/ && npm i
 
 WORKDIR /app/strapi-wtelno
 
+EXPOSE 1337
 
 CMD ["npm","run","strapi","develop" ]
