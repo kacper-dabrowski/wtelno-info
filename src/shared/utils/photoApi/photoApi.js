@@ -1,5 +1,5 @@
 import axios from 'axios';
-import websources from '../websources';
+import websources from '../../websources';
 
 const getPhotoData = async (text, options) => {
     const response = await axios.post(websources.PHOTOS_API_URL, { text, options });
