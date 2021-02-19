@@ -4,7 +4,7 @@ import { ClipLoader } from 'react-spinners';
 import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
 import Card from '../../components/Card/PersonCard';
 import OrganizationCard from '../../components/Card/OrganizationCard';
-import photoApiCall from '../../shared/utils/photoApi';
+import photoApiCall from '../../shared/utils/photoApi/photoApi';
 
 import websources from '../../shared/websources';
 
