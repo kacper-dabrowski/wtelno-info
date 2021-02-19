@@ -1,14 +1,16 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest/globals": true
     },
     "extends": [
         "airbnb",
         "eslint:recommended",
         "plugin:prettier/recommended",
         "plugin:react/recommended",
-        "prettier/react"
+        "prettier/react",
+        "plugin:jest/recommended"
     ],
     "globals": {},
     "parser": "babel-eslint",
@@ -19,7 +21,7 @@
             "jsx": true
         }
     },
-    "plugins": ["react", "prettier"],
+    "plugins": ["react", "prettier", "jest"],
     "rules": {
         "prettier/prettier": "error",
         "react/jsx-filename-extension": "off",
