@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
-import Card from '../../components/Card/PersonCard';
+import Card from '../../components/Card/PersonCard/PersonCard';
 import OrganizationCard from '../../components/Card/OrganizationCard';
 import photoApiCall from '../../shared/utils/photoApi/photoApi';
 

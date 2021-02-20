@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonCard from '../../../components/Card/PersonCard';
+import PersonCard from '../../../components/Card/PersonCard/PersonCard';
 import { CenteredSpinner } from '../../../components/Gallery/StyledGallery';
 import useRequest from '../../../shared/hooks/useRequest';
 import websources from '../../../shared/websources';

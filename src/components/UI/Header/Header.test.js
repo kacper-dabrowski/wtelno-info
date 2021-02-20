@@ -1,21 +1,10 @@
-import { configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import React from 'react';
 import ProgressiveImage from 'react-progressive-graceful-image';
 import { MemoryRouter } from 'react-router-dom';
 import paths from '../../../shared/paths';
 import Header from './Header';
-
-configure({ adapter: new Adapter() });
-
-jest.mock('react-router-dom', () => {
-    const originalModule = jest.requireActual('react-router-dom');
-    return {
-        _esModule: true,
-        ...originalModule,
-        location: 'dupa',
-    };
-});
+import '../../../setupTests';
 
 function mountHeaderWithMemoryRouter(path) {
     return mount(
