@@ -5,8 +5,6 @@ services:
         build:
             dockerfile: api.dockerfile
             context: ./dev/dockerfiles/api/
-        ports:
-            - '1337:1337'
     react:
         build:
             context: .

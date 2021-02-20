@@ -29,7 +29,11 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint -c  ./.eslintrc.json . .",
-        "lint:fix": "eslint -c ./.eslintrc.json . --fix"
+        "lint:fix": "eslint -c ./.eslintrc.json . --fix",
+        "dev": "docker-compose -f docker-compose.yaml -f development.yaml up ",
+        "dev:build": "docker-compose -f docker-compose.yaml -f development.yaml up --build",
+        "deploy": "docker-compose -f docker-compose.yaml -f production.yaml up ",
+        "deploy:build": "docker-compose -f docker-compose.yaml -f production.yaml up --build"
     },
     "browserslist": {
         "production": [
