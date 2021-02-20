@@ -1,0 +1,15 @@
+version: '3.18'
+
+services:
+    strapi:
+        build:
+            dockerfile: api.dockerfile
+            context: ./prod/dockerfiles/api/
+    react:
+        build:
+            context: .
+            dockerfile: ./prod/dockerfiles/react-app/react-app.dockerfile
+    utils-api:
+        build:
+            dockerfile: utils-api.dockerfile
+            context: ./prod/dockerfiles/utils-api/
