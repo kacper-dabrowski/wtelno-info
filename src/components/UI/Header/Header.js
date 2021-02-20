@@ -15,6 +15,7 @@ import cameraLogo from '../../../assets/ar-camera.png';
 import pinLogo from '../../../assets/pin.png';
 import { HeaderIcon } from './HeaderIconContainer/HeaderIcon/HeaderIcon';
 import { HeaderIconContainer } from './HeaderIconContainer/HeaderIconContainer';
+import paths from '../../../shared/paths';
 
 const Header = ({ location }) => {
     let headerBgPosition;
@@ -28,28 +29,28 @@ const Header = ({ location }) => {
             headerBgPosition = 'cover';
             break;
         }
-        case '/parafia/galeria-parafialna':
-        case '/parafia/ogloszenia':
-        case '/parafia': {
+        case paths.church.churchGallery:
+        case paths.church.churchAnnouncements:
+        case paths.church.churchInfo:
+        case paths.church.churchTerms: {
             headerBg = churchBg;
             headerBgPlaceholder = churchBgPlaceholder;
             headerBgPosition = '50% 0';
             break;
         }
-        case '/galeria/oswiata':
-        case '/szkola': {
+        case paths.main.school: {
             headerBg = schoolBg;
             headerBgPlaceholder = schoolBgPlaceholder;
             headerBgPosition = '50% 50%';
             break;
         }
-        case '/galeria/krajobrazy':
-        case '/soltys': {
+        case paths.main.government: {
             headerBg = governmentBg;
             headerBgPlaceholder = governmentBgPlaceholder;
             headerBgPosition = '50% 60%';
         }
     }
+
     return (
         <ProgressiveImage src={headerBg} placeholder={headerBgPlaceholder}>
             {(src) => (
