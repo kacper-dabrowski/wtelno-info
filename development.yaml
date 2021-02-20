@@ -4,22 +4,21 @@ services:
     strapi:
         build:
             dockerfile: api.dockerfile
-            context: ./prod/dockerfiles/api/
+            context: ./dev/dockerfiles/api/
         ports:
             - '1337:1337'
     react:
         build:
             context: .
-            dockerfile: ./prod/dockerfiles/react-app/react-app.dockerfile
-        ports:
-            - '3000:3000'
+            dockerfile: ./dev/dockerfiles/react-app/react-app.dockerfile
+        volumes:
+            - react-node_modules:/app/node_modules
+            - .:/app
         stdin_open: true
         tty: true
-        depends_on:
-            - strapi
     utils-api:
         build:
             dockerfile: utils-api.dockerfile
-            context: ./prod/dockerfiles/utils-api/
-        ports:
-            - 3001:3001
+            context: ./dev/dockerfiles/utils-api/
+volumes:
+    react-node_modules:
