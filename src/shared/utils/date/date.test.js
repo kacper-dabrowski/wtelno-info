@@ -1,7 +1,7 @@
 import { formatDate } from './date';
 
 it('should return a valid formatted date', () => {
-    const date = 'Fri Feb 19 2021 16:23:11 GMT+0100 (Central European Standard Time)';
+    const date = 'Fri Feb 19 2021 16:23:11';
 
     const formattedDate = formatDate(date);
 
