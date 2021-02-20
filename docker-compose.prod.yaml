@@ -1,0 +1,25 @@
+version: '3.18'
+
+services:
+    strapi:
+        build:
+            dockerfile: api.dockerfile
+            context: ./prod/dockerfiles/api/
+        ports:
+            - '1337:1337'
+    react:
+        build:
+            context: .
+            dockerfile: ./prod/dockerfiles/react-app/react-app.dockerfile
+        ports:
+            - '3000:3000'
+        stdin_open: true
+        tty: true
+        depends_on:
+            - strapi
+    utils-api:
+        build:
+            dockerfile: utils-api.dockerfile
+            context: ./prod/dockerfiles/utils-api/
+        ports:
+            - 3001:3001
