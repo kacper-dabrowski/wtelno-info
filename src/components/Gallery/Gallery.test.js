@@ -1,12 +1,11 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
+import { MemoryRouter, Route } from 'react-router-dom';
+import '../../setupTests';
 import useRequest from '../../shared/hooks/useRequest';
 import { MainHeader } from '../UniversalStyles/ArticleStyles';
 import Gallery from './Gallery';
-import '../../setupTests';
 import { CenteredSpinner } from './StyledGallery';
-import { MemoryRouter, Route, Switch } from 'react-router-dom';
-import { render } from '@testing-library/react';
 
 jest.mock('../../shared/hooks/useRequest');
 
@@ -44,29 +43,33 @@ describe('<Gallery/>', () => {
     it('should render a header for an empty gallery', () => {
         const expectedResponse = { data: [] };
         withSuccessfulRequest(expectedResponse);
-        const wrapper = mount(<Gallery fetchUrl="" />);
+        const wrapper = mount(
+            <MemoryRouter>
+                <Gallery fetchUrl="" />
+            </MemoryRouter>
+        );
 
         expect(wrapper.find(MainHeader).text()).toEqual('Galeria świeci pustkami...');
     });
 
-    // it('should render valid routes for response with albums', () => {
-    //     const expectedResponse = {
-    //         data: [
-    //             {
-    //                 _id: 'dummy_id',
-    //                 id: 'dummyid',
-    //                 media: [{ formats: { thumbnail: { url: 'url' } } }],
-    //                 title: 'dummytitle',
-    //             },
-    //         ],
-    //     };
-    //     withSuccessfulRequest(expectedResponse);
-    //     const wrapper = mount(
-    //         <MemoryRouter initialEntries={['/base']}>
-    //             <Gallery fetchUrl="/fetch" baseUrl="/base" mediaUrl="/media" />
-    //         </MemoryRouter>
-    //     );
+    it('should render valid routes for response with albums', () => {
+        const expectedResponse = {
+            data: [
+                {
+                    _id: 'dummy_id',
+                    id: 'dummyid',
+                    media: [{ formats: { thumbnail: { url: 'url' } } }],
+                    title: 'dummytitle',
+                },
+            ],
+        };
+        withSuccessfulRequest(expectedResponse);
+        const wrapper = mount(
+            <MemoryRouter initialEntries={['/base']}>
+                <Gallery fetchUrl="/fetch" baseUrl="/base" mediaUrl="/media" />
+            </MemoryRouter>
+        );
 
-    //     expect(wrapper.find(Switch).childAt(1)).toEqual('/base');
-    // });
+        expect(wrapper.find(Route).props().path).toEqual('/base');
+    });
 });
