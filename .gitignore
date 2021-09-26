@@ -24,3 +24,4 @@ yarn-error.log*
 .idea
 /dev/dockerfiles/api/.env
 /prod/dockerfiles/api/.env
+.env
