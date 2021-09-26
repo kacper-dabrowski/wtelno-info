@@ -11,7 +11,8 @@ import websources from '../../shared/websources';
 const News = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/events`);
 
-    const pageData = response?.data;
+    const pageData = response?.data?.reverse();
+
     if (error) {
         return (
             <Container>
@@ -19,6 +20,7 @@ const News = () => {
             </Container>
         );
     }
+
     if (loading) {
         return (
             <Container>
@@ -39,7 +41,7 @@ const News = () => {
 
     const newsRouter = (
         <Switch>
-            <Route path="/aktualnosci" exact render={() => <NewsContainer posts={pageData} />} />
+            <Route path="/aktualnosci" exact render={() => <NewsContainer posts={pageData.reverse()} />} />
             {postRoutes || null}
         </Switch>
     );
