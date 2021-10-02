@@ -42,9 +42,7 @@ function App() {
                         <Contact />
                     </Route>
                     <Route path={paths.notFound}>
-                        <NotFound>
-                            <h1>Strona o podanym adresie nie istnieje.</h1>
-                        </NotFound>
+                        <NotFound />
                     </Route>
                     <Redirect to="/nie-znaleziono-strony" />
                 </Switch>
