@@ -14,6 +14,8 @@ import websources from '../../../shared/websources';
 import useRequest from '../../../shared/hooks/useRequest';
 import CurrentParsonCard from './CurrentParsonCard';
 import { CenteredSpinner } from '../../../components/Gallery/StyledGallery';
+import { withHeaders } from '../../../hoc/withHeaders';
+import { headersConfig } from '../../../shared/headers/headers';
 
 const ChurchInfo = () => {
     const [importantDates, importantDatesLoading, importantDatesError] = useRequest(
@@ -72,4 +74,4 @@ const ChurchInfo = () => {
     );
 };
 
-export default React.memo(ChurchInfo);
+export default withHeaders(React.memo(ChurchInfo), headersConfig.church.main);

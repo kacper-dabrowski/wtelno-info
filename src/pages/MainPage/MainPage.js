@@ -1,5 +1,7 @@
 import React from 'react';
 import Page from '../../components/Page';
+import { withHeaders } from '../../hoc/withHeaders';
+import { headersConfig } from '../../shared/headers/headers';
 
-const mainPage = () => <Page pageName="wtelno" />;
-export default mainPage;
+const MainPage = () => <Page pageName="wtelno" />;
+export default withHeaders(MainPage, headersConfig.government.main);

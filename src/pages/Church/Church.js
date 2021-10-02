@@ -6,8 +6,21 @@ import Gallery from '../../components/Gallery';
 import paths from '../../shared/paths';
 import websources from '../../shared/websources';
 import ChurchTerms from './ChurchTerms/ChurchTerms';
+import { withHeaders } from '../../hoc/withHeaders';
+import { headersConfig } from '../../shared/headers/headers';
 
-const church = () => {
+const ChurchGallery = withHeaders(
+    () => (
+        <Gallery
+            baseUrl={paths.church.churchGallery}
+            fetchUrl={`${websources.STRAPI_CMS_URL}/church-albums`}
+            mediaUrl={websources.STRAPI_CMS_URL}
+        />
+    ),
+    headersConfig.church.churchGallery
+);
+
+const Church = () => {
     return (
         <Switch>
             <Route path={paths.church.churchInfo} exact>
@@ -20,14 +33,10 @@ const church = () => {
                 <ChurchTerms />
             </Route>
             <Route path={paths.church.churchGallery}>
-                <Gallery
-                    baseUrl={paths.church.churchGallery}
-                    fetchUrl={`${websources.STRAPI_CMS_URL}/church-albums`}
-                    mediaUrl={websources.STRAPI_CMS_URL}
-                />
+                <ChurchGallery />
             </Route>
         </Switch>
     );
 };
 
-export default church;
+export default Church;

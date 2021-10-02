@@ -7,6 +7,8 @@ import OrganizationCard from '../../components/Card/OrganizationCard';
 import photoApiCall from '../../shared/utils/photoApi/photoApi';
 
 import websources from '../../shared/websources';
+import { headersConfig } from '../../shared/headers/headers';
+import { withHeaders } from '../../hoc/withHeaders';
 
 class Government extends Component {
     state = {
@@ -78,4 +80,4 @@ class Government extends Component {
         );
     }
 }
-export default Government;
+export default withHeaders(Government, headersConfig.government.government);

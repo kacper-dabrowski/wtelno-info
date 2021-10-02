@@ -4,6 +4,8 @@ import { Container, MainHeader } from '../../../components/UniversalStyles/Artic
 import ChurchAnnouncement from './ChurchAnnouncement';
 import useRequest from '../../../shared/hooks/useRequest';
 import websources from '../../../shared/websources';
+import { withHeaders } from '../../../hoc/withHeaders';
+import { headersConfig } from '../../../shared/headers/headers';
 
 const ChurchAnnouncements = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/church-events`);
@@ -37,4 +39,4 @@ const ChurchAnnouncements = () => {
     );
 };
 
-export default ChurchAnnouncements;
+export default withHeaders(ChurchAnnouncements, headersConfig.church.churchAnnouncements);

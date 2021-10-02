@@ -7,6 +7,8 @@ import markdownConfig from '../../shared/markdownConfig';
 import { Container, MainHeader } from '../../components/UniversalStyles/ArticleStyles';
 import HistoryCard from '../../components/Card/HistoryCard';
 import useRequest from '../../shared/hooks/useRequest';
+import { withHeaders } from '../../hoc/withHeaders';
+import { headersConfig } from '../../shared/headers/headers';
 
 const History = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/history`);
@@ -58,4 +60,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default withHeaders(History, headersConfig.history);

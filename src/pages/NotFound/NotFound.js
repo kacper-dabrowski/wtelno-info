@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import React from 'react';
+import { headersConfig } from '../../shared/headers/headers';
+import { withHeaders } from '../../hoc/withHeaders';
 
-const NotFound = styled.div`
+const StyledNotFound = styled.div`
     color: #655c56;
     display: flex;
     align-items: center;
@@ -8,6 +11,12 @@ const NotFound = styled.div`
     padding: 1rem;
     text-align: center;
     width: 100%;
-    height: 60vh;
 `;
-export default NotFound;
+
+const NotFound = () => (
+    <StyledNotFound>
+        <h1>Strona o podanym adresie nie istnieje.</h1>
+    </StyledNotFound>
+);
+
+export default withHeaders(NotFound, headersConfig.notFound.main);
