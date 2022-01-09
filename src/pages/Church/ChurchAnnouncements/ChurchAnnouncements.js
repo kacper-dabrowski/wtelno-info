@@ -30,7 +30,7 @@ const ChurchAnnouncements = () => {
         return <Container />;
     }
 
-    const articles = pageData.map((article) => <ChurchAnnouncement key={article.id} article={article} />);
+    const articles = pageData.map((article) => <ChurchAnnouncement key={article.id} article={article} />).reverse();
     return (
         <Container>
             <MainHeader>Ogłoszenia parafialne</MainHeader>
