@@ -31,6 +31,7 @@
         "lint:fix": "eslint -c ./.eslintrc.json . --fix",
         "format": "prettier .",
         "format:fix": "prettier . --write",
+        "fix":"npm run lint:fix && npm run format:fix",
         "dev:build": "docker-compose -f docker-compose.yaml -f development.yaml up --build",
         "deploy": "docker-compose -f docker-compose.yaml -f production.yaml up ",
         "deploy:build": "docker-compose -f docker-compose.yaml -f production.yaml up --build"
