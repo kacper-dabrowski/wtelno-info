@@ -33,6 +33,6 @@
         "react/jsx-props-no-spreading": "off",
         "no-underscore-dangle": "off",
         "react/display-name": "off",
-        "no-use-before-define":"off"
+        "no-use-before-define": "off"
     }
 }

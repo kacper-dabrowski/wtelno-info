@@ -1,14 +1,14 @@
 version: '3.18'
 
 services:
-  strapi:
-    ports:
-      - '1337:1337'
-  react:
-    depends_on:
-      - strapi
-    ports:
-      - 3000:3000
-  utils-api:
-    ports:
-      - 3001:3001
+    strapi:
+        ports:
+            - '1337:1337'
+    react:
+        depends_on:
+            - strapi
+        ports:
+            - 3000:3000
+    utils-api:
+        ports:
+            - 3001:3001
