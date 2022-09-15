@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { MainHeader, Container } from '../../components/UniversalStyles/ArticleStyles';
-import NewsContainer from '../../components/NewsContainer';
-import FullPost from '../../components/NewsContainer/FullPost';
-import useRequest from '../../shared/hooks/useRequest';
-import websources from '../../shared/websources';
+import { Container, MainHeader } from '../../src/components/UniversalStyles/ArticleStyles';
+import useRequest from '../../src/shared/hooks/useRequest';
+import websources from '../../src/shared/websources';
+import FullPost from '../../src/components/NewsContainer/FullPost';
+import NewsContainer from '../../src/components/NewsContainer';
 
 const News = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/events`);

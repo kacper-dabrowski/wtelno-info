@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import ProgressiveImage from 'react-progressive-graceful-image';
-import paths from '../../../shared/paths';
+import { paths } from '../../../shared/paths';
 import { HeaderIcon } from './HeaderIconContainer/HeaderIcon/HeaderIcon';
 import { HeaderIconContainer } from './HeaderIconContainer/HeaderIconContainer';
 import { HeaderContainer, HeaderParagraph, HeaderTitle } from './HeaderStyles';

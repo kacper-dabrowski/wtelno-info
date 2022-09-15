@@ -5,7 +5,6 @@ import { Container, MainHeader, SecondaryHeader } from '../../components/Univers
 import Card from '../../components/Card/PersonCard';
 import OrganizationCard from '../../components/Card/OrganizationCard';
 import photoApiCall from '../../shared/utils/photoApi/photoApi';
-
 import websources from '../../shared/websources';
 import { headersConfig } from '../../shared/headers/headers';
 import { withHeaders } from '../../hoc/withHeaders';

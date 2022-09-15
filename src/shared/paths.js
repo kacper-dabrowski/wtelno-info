@@ -17,4 +17,4 @@ const paths = {
     notFound: '/nie-znaleziono-strony',
 };
 
-export default paths;
+export { paths };

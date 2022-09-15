@@ -12,4 +12,4 @@ const getPhotoData = async (text, options) => {
     return photoUrl;
 };
 
-export default getPhotoData;
+export { getPhotoData };

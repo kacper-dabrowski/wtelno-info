@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
-import markdownConfig from '../../shared/markdownConfig';
+import { markdownConfig } from '../../shared/markdownConfig';
 import websources from '../../shared/websources';
 import useRequest from '../../shared/hooks/useRequest';
 

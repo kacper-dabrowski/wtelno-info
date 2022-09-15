@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import markdownConfig from '../../../shared/markdownConfig';
+import { markdownConfig } from '../../../shared/markdownConfig';
 import { PostHeader, PostContainer, PostDate, NewsLink } from './StyledFullPost';
 import { formatDate } from '../../../shared/utils/date/date';
 
