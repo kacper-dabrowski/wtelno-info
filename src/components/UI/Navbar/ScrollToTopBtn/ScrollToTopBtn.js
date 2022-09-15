@@ -1,7 +1,6 @@
 import React from 'react';
-
+import arrowUp from '../../../../../public/assets/util-images/up-arrow.png';
 import { StyledScrollToTopBtn } from './StyledScrollToTopBtn';
-import arrowUp from '../../../../assets/util-images/up-arrow.png';
 
 const ScrollToTopBtn = ({ clicked, scrollPosition }) => (
     <StyledScrollToTopBtn onClick={clicked} scrollPosition={scrollPosition}>

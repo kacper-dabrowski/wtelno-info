@@ -2,20 +2,21 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-graceful-image';
 import { HeaderContainer, HeaderParagraph, HeaderTitle } from './HeaderStyles';
-import mainBg from '../../../assets/header-images/high-quality/main.jpg';
-import mainBgPlaceholder from '../../../assets/header-images/low-quality/main.jpg';
-import churchBg from '../../../assets/header-images/high-quality/church.jpg';
-import churchBgPlaceholder from '../../../assets/header-images/low-quality/church.jpg';
-import schoolBg from '../../../assets/header-images/high-quality/school.jpg';
-import schoolBgPlaceholder from '../../../assets/header-images/low-quality/school.jpg';
-import governmentBg from '../../../assets/header-images/high-quality/government.jpg';
-import governmentBgPlaceholder from '../../../assets/header-images/low-quality/government.jpg';
-import fbLogo from '../../../assets/facebook.png';
-import cameraLogo from '../../../assets/ar-camera.png';
-import pinLogo from '../../../assets/pin.png';
+import mainBg from '../../../../public/assets/header-images/high-quality/main.jpg';
+import mainBgPlaceholder from '../../../../public/assets/header-images/low-quality/main.jpg';
+import churchBg from '../../../../public/assets/header-images/high-quality/church.jpg';
+import churchBgPlaceholder from '../../../../public/assets/header-images/low-quality/church.jpg';
+import schoolBg from '../../../../public/assets/header-images/high-quality/school.jpg';
+import schoolBgPlaceholder from '../../../../public/assets/header-images/low-quality/school.jpg';
+import governmentBg from '../../../../public/assets/header-images/high-quality/government.jpg';
+import governmentBgPlaceholder from '../../../../public/assets/header-images/low-quality/government.jpg';
+import fbLogo from '../../../../public/assets/facebook.png';
+import cameraLogo from '../../../../public/assets/ar-camera.png';
+import pinLogo from '../../../../public/assets/pin.png';
 import { HeaderIcon } from './HeaderIconContainer/HeaderIcon/HeaderIcon';
 import { HeaderIconContainer } from './HeaderIconContainer/HeaderIconContainer';
 import paths from '../../../shared/paths';
+
 
 const Header = ({ location }) => {
     let headerBgPosition;

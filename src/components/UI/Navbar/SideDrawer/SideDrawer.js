@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import logo from '../../../../assets/drzewowsvg.svg';
-
+import logo from '../../../../../public/assets/drzewowsvg.svg';
 import NavbarItems from '../NavbarItems/NavbarItems';
 import { StyledLogo, StyledSideDrawer } from './StyledSideDrawer';
 
@@ -19,4 +17,5 @@ const sideDrawer = ({ isActive, SidedrawerToggled }) => {
 sideDrawer.propTypes = {
     isActive: PropTypes.bool.isRequired,
 };
+
 export default sideDrawer;
