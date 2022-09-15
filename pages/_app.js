@@ -1,14 +1,12 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Layout from '../src/containers/Layout';
+import '../src/index.css';
 
 function MyApp({Component,pageProps}) {
     return (
-        <BrowserRouter>
             <Layout>
                 <Component {...pageProps}/>
             </Layout>
-        </BrowserRouter>
     );
 }
 

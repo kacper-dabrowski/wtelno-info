@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link'
 
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled.a`
     display: block;
     width: 100%;
     text-decoration: none;
     padding: 0.5rem;
     color: #655c56;
     font-size: 1.2rem;
+    cursor:pointer;
     &:hover {
         background-color: #655c56;
         color: #eee;
@@ -32,6 +33,7 @@ export const StyledLink = styled(NavLink)`
 export const MainLink = styled(StyledLink)`
     font-weight: bold;
 `;
+
 export const NestedLinks = styled.ul`
     /*li ul*/
     display: block;
@@ -49,7 +51,6 @@ export const NestedLinks = styled.ul`
 export const LinkContainer = styled.li`
     width: 100%;
     list-style: none;
-    text-decoration: none;
     text-align: center;
 
     @media (min-width: 850px) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import logo from '../../../../../public/assets/drzewowsvg.svg';
+import logo from '../../../../../public/static/drzewowsvg.svg';
 import NavbarItems from '../NavbarItems/NavbarItems';
 import { StyledLogo, StyledSideDrawer } from './StyledSideDrawer';
 

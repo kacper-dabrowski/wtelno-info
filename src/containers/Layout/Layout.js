@@ -4,8 +4,10 @@ import Header from '../../components/UI/Header/Header';
 import Footer from '../../components/UI/Footer';
 import ScrollToTopBtn from '../../components/UI/Navbar/ScrollToTopBtn/ScrollToTopBtn';
 import { ChildrenWrapper } from './LayoutStyles';
+import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
+    const router = useRouter()
     const [showScrollArrow, setScrollArrow] = useState(false);
 
     const scrollToTop = useCallback(() => {
@@ -26,7 +28,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Navbar />
-            <Header />
+            <Header location={router.pathname} />
             <ChildrenWrapper>{children}</ChildrenWrapper>
             <ScrollToTopBtn clicked={scrollToTop} scrollPosition={showScrollArrow} />
             <Footer />
