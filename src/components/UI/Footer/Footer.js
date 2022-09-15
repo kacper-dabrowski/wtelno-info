@@ -1,10 +1,9 @@
 import React from 'react';
-import  * as Styled from './FooterStyles';
+import * as Styled from './FooterStyles';
 import FooterCredits from './FooterCredits/FooterCredits';
+
 const coderImage = '/static/footer-images/programming.png';
 const editorImage = '/static/footer-images/ink.png';
-
-
 
 const Footer = () => (
     <Styled.Footer>

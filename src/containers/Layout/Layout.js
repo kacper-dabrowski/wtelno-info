@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Navbar from '../../components/UI/Navbar';
 import Header from '../../components/UI/Header/Header';
 import Footer from '../../components/UI/Footer';
 import ScrollToTopBtn from '../../components/UI/Navbar/ScrollToTopBtn/ScrollToTopBtn';
 import { ChildrenWrapper } from './LayoutStyles';
-import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
-    const router = useRouter()
+    const router = useRouter();
     const [showScrollArrow, setScrollArrow] = useState(false);
 
     const scrollToTop = useCallback(() => {

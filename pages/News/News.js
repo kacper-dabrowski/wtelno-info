@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
 import { ClipLoader } from 'react-spinners';
 import { MainHeader, Container } from '../../components/UniversalStyles/ArticleStyles';
 import NewsContainer from '../../components/NewsContainer';

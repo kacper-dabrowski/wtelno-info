@@ -1,18 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import mobile from 'is-mobile';
+import Link from 'next/link';
 import { LinkContainer, MainLink, NestedLinks, StyledLink } from './NavBtnStyles';
 import paths from '../../../../shared/paths';
-import Link from 'next/link';
 
 const NavBtn = ({ dropdownLinks, btnTitle, btnPath, clicked }) => {
     if (!dropdownLinks)
         return (
             <LinkContainer>
-            <Link href={btnPath}>
-                <MainLink  onClick={clicked}>
-                    {btnTitle}
-                </MainLink>
+                <Link href={btnPath}>
+                    <MainLink onClick={clicked}>{btnTitle}</MainLink>
                 </Link>
             </LinkContainer>
         );
@@ -20,9 +18,7 @@ const NavBtn = ({ dropdownLinks, btnTitle, btnPath, clicked }) => {
     const dropdownButtons = dropdownLinks.map((link) => (
         <LinkContainer key={link.title}>
             <Link href={link.path}>
-            <StyledLink  onClick={clicked}>
-                {link.title}
-            </StyledLink>
+                <StyledLink onClick={clicked}>{link.title}</StyledLink>
             </Link>
         </LinkContainer>
     ));
@@ -30,9 +26,9 @@ const NavBtn = ({ dropdownLinks, btnTitle, btnPath, clicked }) => {
     return (
         <LinkContainer key={btnTitle}>
             <Link href={btnPath || null}>
-            <MainLink  exact={btnPath === paths.main.wtelno || mobile()} onClick={clicked}>
-                {btnTitle}
-            </MainLink>
+                <MainLink exact={btnPath === paths.main.wtelno || mobile()} onClick={clicked}>
+                    {btnTitle}
+                </MainLink>
             </Link>
             <NestedLinks>{dropdownButtons}</NestedLinks>
         </LinkContainer>

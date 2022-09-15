@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Link from 'next/link'
+import Link from 'next/link';
 
 export const StyledLink = styled.a`
     display: block;
@@ -8,7 +8,7 @@ export const StyledLink = styled.a`
     padding: 0.5rem;
     color: #655c56;
     font-size: 1.2rem;
-    cursor:pointer;
+    cursor: pointer;
     &:hover {
         background-color: #655c56;
         color: #eee;

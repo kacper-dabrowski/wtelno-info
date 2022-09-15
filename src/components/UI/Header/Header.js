@@ -15,7 +15,10 @@ const mainBgPlaceholderPath = '/static/header-images/low-quality/main.jpg';
 const schoolBgPlaceholderPath = '/static/header-images/low-quality/school.jpg';
 
 const Header = ({ location }) => {
-    const { headerBg, headerBgPlaceholder, headerBgPosition } = useMemo(() => getImagePropsBasedOnLocation(location),[location]);
+    const { headerBg, headerBgPlaceholder, headerBgPosition } = useMemo(
+        () => getImagePropsBasedOnLocation(location),
+        [location]
+    );
 
     return (
         <ProgressiveImage src={headerBg} placeholder={headerBgPlaceholder}>
@@ -27,20 +30,20 @@ const Header = ({ location }) => {
 
                         <HeaderIconContainer>
                             <HeaderIcon
-                                imgUrl={'/static/facebook.png'}
+                                imgUrl="/static/facebook.png"
                                 tooltipContent="Nasza strona na facebooku"
                                 href="https://www.facebook.com/wtelno.info"
                                 target="_blank"
                             />
                             <HeaderIcon
                                 tooltipContent="Powietrzny Kadr"
-                                imgUrl={'/static/ar-camera.png'}
+                                imgUrl="/static/ar-camera.png"
                                 href="https://www.facebook.com/powietrznykadr"
                                 target="_blank"
                             />
                             <HeaderIcon
                                 tooltipContent="Lokalizacja wsi Wtelno"
-                                imgUrl={'/static/pin.png'}
+                                imgUrl="/static/pin.png"
                                 href="https://www.google.com/maps/place/86-011+Wtelno,+Poland/@53.2382118,17.8823626,14z/data=!3m1!4b1!4m5!3m4!1s0x47030f6d8ede1a59:0x720e28b7354a6156!8m2!3d53.2382136!4d17.8998722"
                                 target="_blank"
                             />
