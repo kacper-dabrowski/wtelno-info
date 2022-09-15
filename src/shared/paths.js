@@ -1,7 +1,7 @@
 const paths = {
     main: {
         wtelno: '/',
-        school: '/szkola',
+        school: '/School',
         government: '/wladze',
     },
     church: {

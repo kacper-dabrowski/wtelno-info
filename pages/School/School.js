@@ -1,8 +1,7 @@
 import React from 'react';
-import Page from '../../components/Page';
-import { headersConfig } from '../../shared/headers/headers';
-import { withHeaders } from '../../hoc/withHeaders';
-
+import { headersConfig } from '../../src/shared/headers/headers';
+import { withHeaders } from '../../src/hoc/withHeaders';
+import Page from '../../src/components/Page'
 const school = () => <Page pageName="oswiata" />;
 
 export default withHeaders(school, headersConfig.government.school);
