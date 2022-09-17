@@ -1,7 +1,7 @@
 import React from 'react';
-import Page from '../../../components/Page/Page';
-import { withHeaders } from '../../../hoc/withHeaders';
-import { headersConfig } from '../../../shared/headers/headers';
+import Page from '../../../src/components/Page';
+import { withHeaders } from '../../../src/hoc/withHeaders';
+import { headersConfig } from '../../../src/shared/headers/headers';
 
 const ChurchTerms = () => <Page pageName="regulamin-cmentarza" />;
 

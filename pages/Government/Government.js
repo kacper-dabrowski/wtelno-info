@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
-import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
-import Card from '../../components/Card/PersonCard';
-import OrganizationCard from '../../components/Card/OrganizationCard';
-import photoApiCall from '../../shared/utils/photoApi/photoApi';
-import websources from '../../shared/websources';
-import { headersConfig } from '../../shared/headers/headers';
-import { withHeaders } from '../../hoc/withHeaders';
+import { getPhotoData as photoApiCall } from '../../src/shared/utils/photoApi/photoApi';
+import websources from '../../src/shared/websources';
+import { Container, MainHeader, SecondaryHeader } from '../../src/components/UniversalStyles/ArticleStyles';
+import Card from '../../src/components/Card/PersonCard';
+import OrganizationCard from '../../src/components/Card/OrganizationCard';
 
 class Government extends Component {
     state = {

@@ -1,11 +1,10 @@
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
-import { Container, MainHeader } from '../../../components/UniversalStyles/ArticleStyles';
-import ChurchAnnouncement from './ChurchAnnouncement';
-import useRequest from '../../../shared/hooks/useRequest';
-import websources from '../../../shared/websources';
-import { withHeaders } from '../../../hoc/withHeaders';
-import { headersConfig } from '../../../shared/headers/headers';
+import websources from '../../../src/shared/websources';
+import useRequest from '../../../src/shared/hooks/useRequest';
+import { Container, MainHeader } from '../../../src/components/UniversalStyles/ArticleStyles';
+import { withHeaders } from '../../../src/hoc/withHeaders';
+import { headersConfig } from '../../../src/shared/headers/headers';
 
 const ChurchAnnouncements = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/church-events`);

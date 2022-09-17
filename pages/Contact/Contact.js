@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactForm from './ContactForm';
-import { headersConfig } from '../../shared/headers/headers';
-import { withHeaders } from '../../hoc/withHeaders';
+import { withHeaders } from '../../src/hoc/withHeaders';
+import { headersConfig } from '../../src/shared/headers/headers';
 
 const Contact = () => <ContactForm />;
 

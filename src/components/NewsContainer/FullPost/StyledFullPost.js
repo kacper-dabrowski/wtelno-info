@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { MainHeader, Highlight } from '../../UniversalStyles/ArticleStyles';
 import { ShadowedContainer } from '../../UniversalStyles';
-import calendarIcon from '../../../assets/util-images/calendar.png';
+import calendarIcon from '../../../../public/static/util-images/calendar.png';
 
 export const PostContainer = styled(ShadowedContainer)`
     position: relative;

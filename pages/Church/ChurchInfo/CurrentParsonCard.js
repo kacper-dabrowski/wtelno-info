@@ -1,8 +1,8 @@
 import React from 'react';
-import PersonCard from '../../../components/Card/PersonCard';
-import { CenteredSpinner } from '../../../components/Gallery/StyledGallery';
-import useRequest from '../../../shared/hooks/useRequest';
-import websources from '../../../shared/websources';
+import websources from '../../../src/shared/websources';
+import useRequest from '../../../src/shared/hooks/useRequest';
+import { CenteredSpinner } from '../../Gallery/StyledGallery';
+import PersonCard from '../../../src/components/Card/PersonCard';
 
 const CurrentParsonCard = ({ parsonData }) => {
     const [parsonEmailImage, parsonEmailImageLoading, parsonEmailImageError] = useRequest(

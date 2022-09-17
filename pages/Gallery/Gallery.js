@@ -1,9 +1,8 @@
 import React from 'react';
-import Gallery from '../../components/Gallery';
-import paths from '../../shared/paths';
-import websources from '../../shared/websources';
-import { headersConfig } from '../../shared/headers/headers';
-import { withHeaders } from '../../hoc/withHeaders';
+import websources from '../../src/shared/websources';
+import { paths } from '../../src/shared/paths';
+import { withHeaders } from '../../src/hoc/withHeaders';
+import { headersConfig } from '../../src/shared/headers/headers';
 
 const gallery = () => (
     <Gallery

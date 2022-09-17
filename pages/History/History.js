@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
-import websources from '../../shared/websources';
-import markdownConfig from '../../shared/markdownConfig';
-
-import { Container, MainHeader } from '../../components/UniversalStyles/ArticleStyles';
-import HistoryCard from '../../components/Card/HistoryCard';
-import useRequest from '../../shared/hooks/useRequest';
-import { withHeaders } from '../../hoc/withHeaders';
-import { headersConfig } from '../../shared/headers/headers';
+import { Container, MainHeader } from '../../src/components/UniversalStyles/ArticleStyles';
+import { withHeaders } from '../../src/hoc/withHeaders';
+import { headersConfig } from '../../src/shared/headers/headers';
+import useRequest from '../../src/shared/hooks/useRequest';
+import { markdownConfig } from '../../src/shared/markdownConfig';
+import websources from '../../src/shared/websources';
+import HistoryCard from '../../src/components/Card/HistoryCard';
 
 const History = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/history`);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
-import { headersConfig } from '../../shared/headers/headers';
-import { withHeaders } from '../../hoc/withHeaders';
+import { withHeaders } from '../../src/hoc/withHeaders';
+import { headersConfig } from '../../src/shared/headers/headers';
 
 const StyledNotFound = styled.div`
     color: #655c56;

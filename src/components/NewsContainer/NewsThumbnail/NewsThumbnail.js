@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { StyledNewsThumbnail, PostThumbnailHeader, PostThumbnailDate, StyledSubmitBtn } from './StyledNewsThumbnail';
 import { formatDate } from '../../../shared/utils/date/date';
 
@@ -23,4 +22,4 @@ const NewsThumbnail = ({ title, id, history, date }) => {
     );
 };
 
-export default withRouter(NewsThumbnail);
+export default NewsThumbnail;

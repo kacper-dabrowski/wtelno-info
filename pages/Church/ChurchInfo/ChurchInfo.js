@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import markdownConfig from '../../../shared/markdownConfig';
+import HolyMassInfo from './HolyMassInfo';
+import PaymentInfo from '../PaymentInfo';
+import CurrentParsonCard from './CurrentParsonCard';
+import useRequest from '../../../src/shared/hooks/useRequest';
+import websources from '../../../src/shared/websources';
 import {
     Container,
     Highlight,
     KeyValueList,
     MainHeader,
     SecondaryHeader,
-} from '../../../components/UniversalStyles/ArticleStyles';
-import HolyMassInfo from './HolyMassInfo';
-import PaymentInfo from '../PaymentInfo';
-import websources from '../../../shared/websources';
-import useRequest from '../../../shared/hooks/useRequest';
-import CurrentParsonCard from './CurrentParsonCard';
-import { CenteredSpinner } from '../../../components/Gallery/StyledGallery';
-import { withHeaders } from '../../../hoc/withHeaders';
-import { headersConfig } from '../../../shared/headers/headers';
+} from '../../../src/components/UniversalStyles/ArticleStyles';
+import { CenteredSpinner } from '../../../src/components/Gallery/StyledGallery';
+import { markdownConfig } from '../../../src/shared/markdownConfig';
+import { withHeaders } from '../../../src/hoc/withHeaders';
+import { headersConfig } from '../../../src/shared/headers/headers';
 
 const ChurchInfo = () => {
     const [importantDates, importantDatesLoading, importantDatesError] = useRequest(
