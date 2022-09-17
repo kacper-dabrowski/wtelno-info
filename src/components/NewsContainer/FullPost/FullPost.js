@@ -8,9 +8,9 @@ const fullPost = ({ title, content, date }) => {
     return (
         <PostContainer>
             <PostHeader>{title}</PostHeader>
-            <NewsLink to="/aktualnosci">Powrót do aktualności</NewsLink>
+            <NewsLink href="/aktualnosci">Powrót do aktualności</NewsLink>
             <PostDate>{formatDate(date)}</PostDate>
-            <ReactMarkdown {...markdownConfig} source={content} />
+            <ReactMarkdown {...markdownConfig}>{content}</ReactMarkdown>
         </PostContainer>
     );
 };

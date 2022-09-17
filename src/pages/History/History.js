@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
-import { Container, MainHeader } from '../../src/components/UniversalStyles/ArticleStyles';
-import { withHeaders } from '../../src/hoc/withHeaders';
-import { headersConfig } from '../../src/shared/headers/headers';
-import useRequest from '../../src/shared/hooks/useRequest';
-import { markdownConfig } from '../../src/shared/markdownConfig';
-import websources from '../../src/shared/websources';
-import HistoryCard from '../../src/components/Card/HistoryCard';
+import websources from '../../shared/websources';
+import useRequest from '../../shared/hooks/useRequest';
+import { Container, MainHeader } from '../../components/UniversalStyles/ArticleStyles';
+import HistoryCard from '../../components/Card/HistoryCard';
+import { markdownConfig } from '../../shared/markdownConfig';
 
 const History = () => {
     const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/history`);
@@ -53,7 +51,7 @@ const History = () => {
     return (
         <Container>
             <MainHeader>Historia</MainHeader>
-            <ReactMarkdown {...markdownConfig} source={pageData.historia} />
+            <ReactMarkdown {...markdownConfig}>{pageData.historia}</ReactMarkdown>
             {peopleCards}
         </Container>
     );

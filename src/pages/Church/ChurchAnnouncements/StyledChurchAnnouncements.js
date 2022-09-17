@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ShadowedContainer } from '../../../components/UniversalStyles';
-import calendarIcon from '../../../assets/util-images/calendar.png';
+
+const calendarIcon = '/static/util-images/calendar.png';
 
 export const AnnouncementContainer = styled(ShadowedContainer)`
     width: 100%;

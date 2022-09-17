@@ -1,41 +1,17 @@
 import React from 'react';
-import { ClipLoader } from 'react-spinners';
-import websources from '../../../src/shared/websources';
-import useRequest from '../../../src/shared/hooks/useRequest';
-import { Container, MainHeader } from '../../../src/components/UniversalStyles/ArticleStyles';
-import { withHeaders } from '../../../src/hoc/withHeaders';
-import { headersConfig } from '../../../src/shared/headers/headers';
 
-const ChurchAnnouncements = () => {
-    const [response, loading, error] = useRequest(`${websources.STRAPI_CMS_URL}/church-events`);
-    const pageData = response?.data;
+import ChurchAnnouncement from './ChurchAnnouncement';
+import { Container, MainHeader } from '../../../components/UniversalStyles/ArticleStyles';
 
-    if (error) {
-        return (
-            <Container>
-                <MainHeader>Coś poszło nie tak przy ładowaniu strony...</MainHeader>
-            </Container>
-        );
-    }
-    if (loading) {
-        return (
-            <Container>
-                <ClipLoader size="100px" />;
-            </Container>
-        );
-    }
+export const ChurchAnnouncements = ({ articles }) => {
+    const articlesList = articles.map(({ title, createdAt, id, content }) => (
+        <ChurchAnnouncement key={id} title={title} createdAt={createdAt} id={id} content={content} />
+    ));
 
-    if (!pageData) {
-        return <Container />;
-    }
-
-    const articles = pageData.map((article) => <ChurchAnnouncement key={article.id} article={article} />);
     return (
         <Container>
             <MainHeader>Ogłoszenia parafialne</MainHeader>
-            {articles}
+            {articlesList}
         </Container>
     );
 };
-
-export default withHeaders(ChurchAnnouncements, headersConfig.church.churchAnnouncements);

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Lightbox from '../../src/components/Gallery/Album/Album';
+import Lightbox from '../../components/Gallery/Album/Lightbox';
 
 export const LightboxContainer = styled.div`
     width: 100%;

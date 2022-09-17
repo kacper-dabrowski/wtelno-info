@@ -7,7 +7,7 @@ export const Page = ({ currentPage }) => {
     return (
         <Container>
             <MainHeader>{currentPage.title}</MainHeader>
-            <ReactMarkdown {...markdownConfig} source={currentPage.content} />
+            <ReactMarkdown {...markdownConfig}>{currentPage.content}</ReactMarkdown>
         </Container>
     );
 };

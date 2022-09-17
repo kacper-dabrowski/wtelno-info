@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { CenteredSpinner, StyledTileContainer } from './StyledGallery';
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
 import AlbumLink from './AlbumLink/AlbumLink';

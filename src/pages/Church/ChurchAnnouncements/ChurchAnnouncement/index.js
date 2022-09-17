@@ -1,1 +1,1 @@
-export { default } from './ChurchAnnouncement';
+export { ChurchAnnouncement as default } from './ChurchAnnouncement';

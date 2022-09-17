@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
-import { getPhotoData as photoApiCall } from '../../src/shared/utils/photoApi/photoApi';
-import websources from '../../src/shared/websources';
-import { Container, MainHeader, SecondaryHeader } from '../../src/components/UniversalStyles/ArticleStyles';
-import Card from '../../src/components/Card/PersonCard';
-import OrganizationCard from '../../src/components/Card/OrganizationCard';
+import websources from '../../shared/websources';
+import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
+import Card from '../../components/Card/PersonCard';
+import OrganizationCard from '../../components/Card/OrganizationCard';
+import { getPhotoData as photoApiCall } from '../../shared/utils/photoApi/photoApi';
 
 class Government extends Component {
     state = {
@@ -77,4 +77,4 @@ class Government extends Component {
         );
     }
 }
-export default withHeaders(Government, headersConfig.government.government);
+export default Government;

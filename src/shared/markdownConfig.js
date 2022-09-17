@@ -1,7 +1,6 @@
 import { Paragraph, Highlight, SecondaryHeader, ArticleImage } from '../components/UniversalStyles/ArticleStyles';
 
 const markdownConfig = {
-    escapeHtml: false,
     renderers: {
         paragraph: Paragraph,
         heading: SecondaryHeader,
