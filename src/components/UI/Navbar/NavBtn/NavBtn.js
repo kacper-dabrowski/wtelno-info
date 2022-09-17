@@ -1,9 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import mobile from 'is-mobile';
 import Link from 'next/link';
 import { LinkContainer, MainLink, NestedLinks, StyledLink } from './NavBtnStyles';
-import paths from '../../../../shared/paths';
 
 const NavBtn = ({ dropdownLinks, btnTitle, btnPath, clicked }) => {
     if (!dropdownLinks)
@@ -26,9 +24,7 @@ const NavBtn = ({ dropdownLinks, btnTitle, btnPath, clicked }) => {
     return (
         <LinkContainer key={btnTitle}>
             <Link href={btnPath || null}>
-                <MainLink exact={btnPath === paths.main.wtelno || mobile()} onClick={clicked}>
-                    {btnTitle}
-                </MainLink>
+                <MainLink onClick={clicked}>{btnTitle}</MainLink>
             </Link>
             <NestedLinks>{dropdownButtons}</NestedLinks>
         </LinkContainer>

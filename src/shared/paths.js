@@ -1,12 +1,12 @@
 const paths = {
     main: {
         wtelno: '/',
-        school: '/School',
+        school: '/oswiata',
         government: '/wladze',
     },
     church: {
         churchInfo: '/parafia',
-        churchGallery: '/parafia/galeria-parafialna',
+        churchGallery: '/parafia/galeria',
         churchAnnouncements: '/parafia/ogloszenia',
         churchTerms: '/parafia/regulamin-cmentarza',
     },

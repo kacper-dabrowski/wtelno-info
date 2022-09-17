@@ -1,13 +1,10 @@
-import React from 'react';
 import { Page } from '../src/components/Page/Page';
 import { fetchDefaultPagesContent } from '../src/pages/content';
 
-const MainPage = ({ currentPage }) => {
-    return <Page currentPage={currentPage} />;
-};
+const Government = ({ currentPage }) => <Page currentPage={currentPage} />;
 
-export async function getStaticProps() {
-    const { notFound, title, content } = await fetchDefaultPagesContent('wtelno');
+export const getStaticProps = async () => {
+    const { notFound, title, content } = await fetchDefaultPagesContent('soltys');
 
     return {
         notFound,
@@ -18,6 +15,6 @@ export async function getStaticProps() {
             },
         },
     };
-}
+};
 
-export default MainPage;
+export default Government;

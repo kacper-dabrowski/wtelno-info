@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBtn from '../NavBtn';
-import paths from '../../../../shared/paths';
+import { paths } from '../../../../shared/paths';
 
 const navbarItems = ({ toggleSidedrawer }) => {
     const dropdownLinks = {

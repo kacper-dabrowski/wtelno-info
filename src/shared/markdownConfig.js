@@ -10,4 +10,5 @@ const markdownConfig = {
         imageReference: ArticleImage,
     },
 };
+
 export { markdownConfig };
