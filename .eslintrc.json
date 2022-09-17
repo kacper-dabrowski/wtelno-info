@@ -11,7 +11,6 @@
         "plugin:react/recommended",
         "prettier/react",
         "plugin:jest/recommended"
-        
     ],
     "globals": {},
     "parser": "babel-eslint",
@@ -22,7 +21,7 @@
             "jsx": true
         }
     },
-    "plugins": ["react", "prettier", "jest","import"],
+    "plugins": ["react", "prettier", "jest", "import"],
     "rules": {
         "prettier/prettier": "error",
         "react/jsx-filename-extension": "off",
@@ -35,6 +34,6 @@
         "no-underscore-dangle": "off",
         "react/display-name": "off",
         "no-use-before-define": "off",
-        "import/no-default-export":"error"
+        "import/no-default-export": "warn"
     }
 }
