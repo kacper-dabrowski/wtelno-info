@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsContainer from '../../components/NewsContainer';
+import NewsContainer from '../NewsContainer';
 
 const News = ({ posts }) => {
     return <NewsContainer posts={posts} />;

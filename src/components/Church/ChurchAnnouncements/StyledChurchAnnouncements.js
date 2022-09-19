@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ShadowedContainer } from '../../../components/UniversalStyles';
+import { ShadowedContainer } from '../../UniversalStyles';
 
 const calendarIcon = '/static/util-images/calendar.png';
 

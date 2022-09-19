@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import { MarkdownParser } from '../../shared/markdownConfig';
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
-import { markdownConfig } from '../../shared/markdownConfig';
 
 export const Page = ({ currentPage }) => {
     return (
         <Container>
             <MainHeader>{currentPage.title}</MainHeader>
-            <ReactMarkdown {...markdownConfig}>{currentPage.content}</ReactMarkdown>
+            <MarkdownParser>{currentPage.content}</MarkdownParser>
         </Container>
     );
 };

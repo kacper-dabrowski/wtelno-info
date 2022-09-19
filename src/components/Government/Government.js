@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import websources from '../../shared/websources';
-import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
-import Card from '../../components/Card/PersonCard';
-import OrganizationCard from '../../components/Card/OrganizationCard';
+import { Container, MainHeader, SecondaryHeader } from '../UniversalStyles/ArticleStyles';
+import Card from '../Card/PersonCard';
+import OrganizationCard from '../Card/OrganizationCard';
 import { getPhotoData as photoApiCall } from '../../shared/utils/photoApi/photoApi';
 
 class Government extends Component {

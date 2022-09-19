@@ -1,16 +1,18 @@
+import Link from 'next/link';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { markdownConfig } from '../../../shared/markdownConfig';
-import { PostHeader, PostContainer, PostDate, NewsLink } from './StyledFullPost';
+import { MarkdownParser } from '../../../shared/markdownConfig';
 import { formatDate } from '../../../shared/utils/date/date';
+import { NewsLink, PostContainer, PostDate, PostHeader } from './StyledFullPost';
 
 const fullPost = ({ title, content, date }) => {
     return (
         <PostContainer>
             <PostHeader>{title}</PostHeader>
-            <NewsLink href="/aktualnosci">Powrót do aktualności</NewsLink>
+            <Link href="/aktualnosci">
+                <NewsLink>Powrót do aktualności</NewsLink>
+            </Link>
             <PostDate>{formatDate(date)}</PostDate>
-            <ReactMarkdown {...markdownConfig}>{content}</ReactMarkdown>
+            <MarkdownParser>{content}</MarkdownParser>
         </PostContainer>
     );
 };

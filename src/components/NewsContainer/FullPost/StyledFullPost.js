@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import Link from 'next/link';
-import { MainHeader, Highlight } from '../../UniversalStyles/ArticleStyles';
 import { ShadowedContainer } from '../../UniversalStyles';
+import { Highlight, MainHeader } from '../../UniversalStyles/ArticleStyles';
 
 const calendarIcon = '/static/util-images/calendar.png';
 
@@ -42,11 +41,12 @@ export const PostDate = styled(Highlight)`
         margin-right: 1rem;
     }
 `;
-export const NewsLink = styled(Link)`
+export const NewsLink = styled.a`
     text-decoration: none;
     color: #655c56;
     font-size: 1.2rem;
     transition: ease-in-out 0.2s;
+    cursor: pointer;
     &:hover {
         transform: scale(1.1);
     }

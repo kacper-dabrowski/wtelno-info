@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import markdownConfig from '../../../../shared/markdownConfig';
 import { formatDate } from '../../../../shared/utils/date/date';
 import { AnnouncementContainer, AnnouncementDate } from '../StyledChurchAnnouncements';
-import { SecondaryHeader } from '../../../../components/UniversalStyles/ArticleStyles';
+import { SecondaryHeader } from '../../../UniversalStyles/ArticleStyles';
 
 export const ChurchAnnouncement = ({ title, createdAt, content }) => (
     <AnnouncementContainer>

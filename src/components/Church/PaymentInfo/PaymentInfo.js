@@ -1,6 +1,6 @@
 import React from 'react';
-import ListData from '../../../src/components/ListData';
-import { ArticleList } from '../../../src/components/UniversalStyles/ArticleStyles';
+import ListData from '../../ListData';
+import { ArticleList } from '../../UniversalStyles/ArticleStyles';
 
 const PaymentInfo = () => {
     const paymentData = {

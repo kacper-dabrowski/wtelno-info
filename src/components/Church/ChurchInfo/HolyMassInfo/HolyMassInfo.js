@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChurchInfoShadowedContainer, ChurchInfoHighlight } from '../ChurchInfoStyles';
-import { ArticleListCentered } from '../../../../components/UniversalStyles/ArticleStyles';
+import { ArticleListCentered } from '../../../UniversalStyles/ArticleStyles';
 
 const HolyMassInfo = ({ massesPlan }) => {
     const sundayPlan = massesPlan.sunday.map((hms) => <li key={hms._id}>{hms.hour}</li>);

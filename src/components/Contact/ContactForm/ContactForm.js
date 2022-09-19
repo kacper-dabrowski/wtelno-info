@@ -7,7 +7,7 @@ import {
     StyledLabel,
     StyledSubmitBtn,
     StyledTextarea,
-} from '../../../components/Form/StyledForm';
+} from '../../Form/StyledForm';
 
 const FORM_URL = 'https://formspree.io/mqkyprpe';
 

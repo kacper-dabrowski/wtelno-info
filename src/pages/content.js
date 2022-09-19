@@ -49,10 +49,48 @@ export const fetchNewsById = async (postId) => {
     return { props: { title, content, createdAt } };
 };
 
+export const getAlbumById = async (albumId) => {
+    const result = await sendRequestForContent(`albums/${albumId}`);
+
+    if (!result) {
+        return { notFound: true };
+    }
+
+    const { title, media } = result;
+
+    return { props: { album: { title, media }, baseUrl: websources.STRAPI_CMS_URL } };
+};
+
+export const getChurchAlbumById = async (albumId) => {
+    const result = await sendRequestForContent(`church-albums/${albumId}`);
+
+    if (!result) {
+        return { notFound: true };
+    }
+
+    const { title, media } = result;
+
+    return { props: { album: { title, media }, baseUrl: websources.STRAPI_CMS_URL } };
+};
+
 export const getNewsIds = async () => {
     const result = await sendRequestForContent('events');
 
     return result.map(({ id }) => id);
+};
+
+export const getAlbums = async () => {
+    return sendRequestForContent('albums');
+};
+
+export const getChurchAlbums = async () => {
+    return sendRequestForContent('church-albums');
+};
+
+export const getHistoryPageContent = async () => {
+    const result = await sendRequestForContent('history');
+
+    return { props: { pageData: result } };
 };
 
 const fetchDefaultPagesContent = async (pageName) => {

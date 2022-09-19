@@ -1,5 +1,5 @@
 import { fetchChurchNews } from '../../src/pages/content';
-import { ChurchAnnouncements } from '../../src/pages/Church/ChurchAnnouncements/ChurchAnnouncements';
+import { ChurchAnnouncements } from '../../src/components/Church/ChurchAnnouncements/ChurchAnnouncements';
 
 const Page = ({ posts }) => <ChurchAnnouncements articles={posts} />;
 
