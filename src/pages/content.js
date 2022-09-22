@@ -98,6 +98,8 @@ const fetchDefaultPagesContent = async (pageName) => {
 
     const pageContent = result.find((page) => page.name === pageName);
 
+    console.log({ result });
+
     if (!pageContent) {
         return { notFound: true };
     }
@@ -114,3 +116,34 @@ async function sendRequestForContent(endpoint = '') {
 
     return result.data;
 }
+
+export const getChurchInfo = async () => {
+    try {
+        const [importantDateDto, { parson }, holyMassDto, currentPage] = await Promise.all([
+            sendRequestForContent('important-date'),
+            sendRequestForContent('parson'),
+            sendRequestForContent('holy-mass'),
+            fetchDefaultPagesContent('parafia'),
+        ]);
+
+        const [parsonDto] = parson;
+
+        return {
+            props: {
+                importantDates: importantDateDto.date,
+                parson: parsonDto,
+                holyMasses: {
+                    sunday: holyMassDto.sunday.map(({ id, hour }) => ({ id, hour })),
+                    excluded: holyMassDto.excluded.map(({ id, hour }) => ({ id, hour })),
+                    normalPlan: holyMassDto.normal.map(({ id, hour }) => ({ id, hour })),
+                },
+                currentPage,
+            },
+        };
+    } catch (error) {
+        return {
+            notFound: true,
+            props: {},
+        };
+    }
+};

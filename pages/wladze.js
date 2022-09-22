@@ -3,6 +3,6 @@ import { defaultPageGetStaticPropsFactory } from '../src/pages/content';
 
 const Government = ({ currentPage }) => <Page currentPage={currentPage} />;
 
-export const getStaticProps = defaultPageGetStaticPropsFactory('wladze');
+export const getStaticProps = defaultPageGetStaticPropsFactory('soltys');
 
 export default Government;

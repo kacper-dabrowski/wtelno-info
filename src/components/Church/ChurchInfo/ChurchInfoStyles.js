@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ShadowedContainer } from '../../../src/components/UniversalStyles';
-import { Highlight } from '../../../src/components/UniversalStyles/ArticleStyles';
+import { Highlight } from '../../UniversalStyles/ArticleStyles';
+import { ShadowedContainer } from '../../UniversalStyles/UniversalStyles';
 
 export const ChurchInfoShadowedContainer = styled(ShadowedContainer)`
     width: 100%;

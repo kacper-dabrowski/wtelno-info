@@ -1,3 +1,5 @@
-import ContactPage from '../../src/pages/Contact';
+import ContactPage from '../../src/components/Contact/Contact';
 
-export default ContactPage;
+const Page = () => <ContactPage />;
+
+export default Page;
