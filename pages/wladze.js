@@ -1,8 +1,10 @@
-import { Page } from '../src/components/Page/Page';
-import { defaultPageGetStaticPropsFactory } from '../src/pages/content';
+import Government from '../src/components/Government';
+import { fetchGovernmentInfo } from '../src/pages/content';
 
-const Government = ({ currentPage }) => <Page currentPage={currentPage} />;
+const Page = ({ mayorData, governorData, memberData }) => (
+    <Government mayorData={mayorData} governorData={governorData} memberData={memberData} />
+);
 
-export const getStaticProps = defaultPageGetStaticPropsFactory('soltys');
+export const getStaticProps = async () => fetchGovernmentInfo();
 
-export default Government;
+export default Page;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { textArrayToImages } from '../shared/utils/textToImage';
 import websources from '../shared/websources';
 
 export const defaultPageGetStaticPropsFactory = (pageName) => {
@@ -16,6 +17,42 @@ export const defaultPageGetStaticPropsFactory = (pageName) => {
         };
     };
 };
+
+export async function fetchGovernmentInfo() {
+    try {
+        const [mayorData, governorData, memberData] = await Promise.all([
+            sendRequestForContent('mayor'),
+            sendRequestForContent('governor'),
+            sendRequestForContent('government-member'),
+        ]);
+
+        const [mayorPhoneImage, mayorEmailImage] = await textArrayToImages([
+            mayorData.telephoneNumber,
+            mayorData.email,
+        ]);
+
+        const [governorPhoneImage] = await textArrayToImages([governorData.telephoneNumber]);
+
+        return {
+            props: {
+                mayorData: {
+                    ...mayorData,
+                    telephoneNumber: mayorPhoneImage,
+                    email: mayorEmailImage,
+                },
+                governorData: {
+                    ...governorData,
+                    telephoneNumber: governorPhoneImage,
+                },
+                memberData,
+            },
+        };
+    } catch (error) {
+        return {
+            notFound: true,
+        };
+    }
+}
 
 export const fetchNews = async () => {
     const result = await sendRequestForContent('events');
@@ -97,8 +134,6 @@ const fetchDefaultPagesContent = async (pageName) => {
     const result = await sendRequestForContent('pages');
 
     const pageContent = result.find((page) => page.name === pageName);
-
-    console.log({ result });
 
     if (!pageContent) {
         return { notFound: true };
