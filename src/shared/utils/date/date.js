@@ -1,11 +1,10 @@
-import moment from 'moment';
+import { format, isValid } from 'date-fns';
 
 export const formatDate = (date) => {
-    const momentDate = moment(date);
-
-    if (!momentDate.isValid()) {
+    const dateObject = new Date(date);
+    if (!isValid(dateObject)) {
         return '';
     }
 
-    return momentDate.format('DD-MM-YYYY HH:mm');
+    return format(dateObject, 'dd-MM-yyyy HH:mm');
 };

@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Navbar from '../../components/UI/Navbar';
-import Header from '../../components/UI/Header/Header';
-import Footer from '../../components/UI/Footer';
-import ScrollToTopBtn from '../../components/UI/Navbar/ScrollToTopBtn/ScrollToTopBtn';
+import { useRouter } from 'next/router';
+import Navbar from '../../components/Layout/Navbar';
+import Header from '../../components/Layout/Header/Header';
+import Footer from '../../components/Layout/Footer';
+import ScrollToTopBtn from '../../components/Layout/Navbar/ScrollToTopBtn/ScrollToTopBtn';
 import { ChildrenWrapper } from './LayoutStyles';
 
 const Layout = ({ children }) => {
+    const router = useRouter();
     const [showScrollArrow, setScrollArrow] = useState(false);
 
     const scrollToTop = useCallback(() => {
@@ -26,7 +28,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Navbar />
-            <Header />
+            <Header location={router.pathname} />
             <ChildrenWrapper>{children}</ChildrenWrapper>
             <ScrollToTopBtn clicked={scrollToTop} scrollPosition={showScrollArrow} />
             <Footer />
