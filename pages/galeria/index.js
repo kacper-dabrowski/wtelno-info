@@ -1,5 +1,5 @@
 import { Gallery } from '../../src/components/Gallery/Gallery';
-import { getAlbums } from '../../src/pages/content';
+import { getAlbums } from '../../src/content/content';
 import { paths } from '../../src/shared/paths';
 import websources from '../../src/shared/websources';
 

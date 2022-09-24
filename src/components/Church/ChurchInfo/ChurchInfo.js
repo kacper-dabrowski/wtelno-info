@@ -1,7 +1,7 @@
 import React from 'react';
 import HolyMassInfo from './HolyMassInfo';
 import PaymentInfo from '../PaymentInfo';
-import CurrentParsonCard from './CurrentParsonCard';
+import { CurrentParsonCard } from './CurrentParsonCard';
 import { Container, Highlight, KeyValueList, MainHeader, SecondaryHeader } from '../../UniversalStyles/ArticleStyles';
 import { MarkdownParser } from '../../../shared/markdownConfig';
 

@@ -1,5 +1,5 @@
 import { Page } from '../../src/components/Page/Page';
-import { defaultPageGetStaticPropsFactory } from '../../src/pages/content';
+import { defaultPageGetStaticPropsFactory } from '../../src/content/content';
 
 const DefaultPage = ({ currentPage }) => <Page currentPage={currentPage} />;
 

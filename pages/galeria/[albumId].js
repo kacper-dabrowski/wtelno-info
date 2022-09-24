@@ -1,5 +1,5 @@
 import { Album } from '../../src/components/Gallery/Album/Album';
-import { getAlbumById, getAlbums } from '../../src/pages/content';
+import { getAlbumById, getAlbums } from '../../src/content/content';
 
 const Page = ({ album, baseUrl }) => {
     return <Album photos={album.media} title={album.title} rootLink={baseUrl} />;

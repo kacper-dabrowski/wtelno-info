@@ -1,12 +1,14 @@
 import { Album } from '../../../src/components/Gallery/Album/Album';
-import { getChurchAlbumById, getChurchAlbums } from '../../../src/pages/content';
+import { getChurchService } from '../../../src/content/churchService';
+import { asPageProps } from '../../../src/content/asProps';
+import websources from '../../../src/shared/websources';
 
 const Page = ({ album, baseUrl }) => {
     return <Album photos={album.media} title={album.title} rootLink={baseUrl} />;
 };
 
 export const getStaticPaths = async () => {
-    const result = await getChurchAlbums();
+    const result = await getChurchService().getAlbums();
 
     return {
         paths: result.map(({ id }) => ({ params: { albumId: id } })),
@@ -15,9 +17,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-    const result = await getChurchAlbumById(context.params.albumId);
-
-    return result;
+    return asPageProps(async () => ({
+        album: await getChurchService().getAlbumById(context.params.albumId),
+        baseUrl: websources.STRAPI_CMS_URL,
+    }));
 };
 
 export default Page;

@@ -1,12 +1,12 @@
 import { Gallery } from '../../../src/components/Gallery/Gallery';
-import { getChurchAlbums } from '../../../src/pages/content';
+import { getChurchService } from '../../../src/content/churchService';
 import { paths } from '../../../src/shared/paths';
 import websources from '../../../src/shared/websources';
 
 const Page = ({ albums, mediaUrl, baseUrl }) => <Gallery albums={albums} mediaUrl={mediaUrl} baseUrl={baseUrl} />;
 
 export const getStaticProps = async () => {
-    const result = await getChurchAlbums();
+    const result = await getChurchService().getAlbums();
 
     return {
         props: {

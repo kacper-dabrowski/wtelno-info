@@ -1,5 +1,5 @@
 import FullPost from '../../src/components/NewsContainer/FullPost';
-import { fetchNewsById, getNewsIds } from '../../src/pages/content';
+import { fetchNewsById, getNewsIds } from '../../src/content/content';
 
 const ParticularNewsPage = (postData) => <FullPost {...postData} />;
 

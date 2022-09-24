@@ -1,17 +1,15 @@
 import { ChurchInfo } from '../../src/components/Church/ChurchInfo/ChurchInfo';
-import { getChurchInfo } from '../../src/pages/content';
+import { asPageProps } from '../../src/content/asProps';
+import { getChurchService } from '../../src/content/churchService';
 
-const Page = ({ currentPage, importantDates, holyMasses, parson }) => (
-    <ChurchInfo
-        currentPage={currentPage}
-        importantDates={importantDates}
-        holyMassInfo={holyMasses}
-        parsonData={parson}
-    />
-);
+const Page = ({ currentPage, dates, holyMasses, parson }) => {
+    return (
+        <ChurchInfo currentPage={currentPage} importantDates={dates} holyMassInfo={holyMasses} parsonData={parson} />
+    );
+};
 
 export const getStaticProps = async () => {
-    return getChurchInfo();
+    return asPageProps(getChurchService().getChurchInfo);
 };
 
 export default Page;

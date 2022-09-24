@@ -1,10 +1,11 @@
 import Government from '../src/components/Government';
-import { fetchGovernmentInfo } from '../src/pages/content';
+import { asPageProps } from '../src/content/asProps';
+import { getGovernmentService } from '../src/content/governmentService';
 
-const Page = ({ mayorData, governorData, memberData }) => (
-    <Government mayorData={mayorData} governorData={governorData} memberData={memberData} />
-);
+const Page = ({ mayorData, governorData, memberData }) => {
+    return <Government mayorData={mayorData} governorData={governorData} memberData={memberData.government} />;
+};
 
-export const getStaticProps = async () => fetchGovernmentInfo();
+export const getStaticProps = () => asPageProps(() => getGovernmentService().fetchGovernmentInfo());
 
 export default Page;

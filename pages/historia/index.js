@@ -1,5 +1,5 @@
-import { getHistoryPageContent } from '../../src/pages/content';
 import { History } from '../../src/components/History/History';
+import { getHistoryPageContent } from '../../src/content/content';
 
 const Page = ({ pageData }) => <History pageData={pageData} />;
 

@@ -5,7 +5,7 @@ import { ArticleListCentered } from '../../../UniversalStyles/ArticleStyles';
 const HolyMassInfo = ({ massesPlan }) => {
     const sundayPlan = massesPlan.sunday.map((hms) => <li key={hms._id}>{hms.hour}</li>);
     const excludedPlan = massesPlan.excluded.map((hms) => <li key={hms._id}>{hms.hour}</li>);
-    const normalPlan = massesPlan.normalPlan.map((hms) => <li key={hms._id}>{hms.hour}</li>);
+    const normalPlan = massesPlan.normal.map((hms) => <li key={hms._id}>{hms.hour}</li>);
 
     return (
         <>

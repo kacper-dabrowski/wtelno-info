@@ -9,7 +9,7 @@ const Government = ({ mayorData, governorData, memberData }) => {
             <MainHeader>Władze</MainHeader>
             <SecondaryHeader>Informacje administracyjne wsi Wtelno.</SecondaryHeader>
             <Card {...governorData} />
-            <OrganizationCard name="Rada Sołecka" people={memberData.government} />
+            <OrganizationCard name="Rada Sołecka" people={memberData} />
             <Card {...mayorData} />
         </Container>
     );

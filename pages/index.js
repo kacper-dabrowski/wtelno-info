@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page } from '../src/components/Page/Page';
-import { defaultPageGetStaticPropsFactory } from '../src/pages/content';
+import { defaultPageGetStaticPropsFactory } from '../src/content/content';
 
 const MainPage = ({ currentPage }) => {
     return <Page currentPage={currentPage} />;

@@ -1,5 +1,5 @@
-import { fetchNews } from '../../src/pages/content';
 import News from '../../src/components/News';
+import { fetchNews } from '../../src/content/content';
 
 const DefaultPage = ({ posts }) => <News posts={posts} />;
 
