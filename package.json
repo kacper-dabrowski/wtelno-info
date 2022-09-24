@@ -31,6 +31,7 @@
         "build": "next build",
         "dev": "next dev",
         "test": "jest",
+        "export": "next export",
         "lint": "eslint -c  ./.eslintrc.json . .",
         "lint:fix": "eslint -c ./.eslintrc.json . --fix",
         "format": "prettier .",
