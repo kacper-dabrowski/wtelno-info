@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import websources from '../../../shared/websources';
 
 export const Container = styled.div`
     & {
@@ -115,5 +114,5 @@ export const StyledArticleImage = styled.img`
 `;
 
 export const ArticleImage = (props) => {
-    return <StyledArticleImage {...props} src={`${websources.STRAPI_CMS_URL}${props.src}`} />;
+    return <StyledArticleImage {...props} src={`${props.src}`} />;
 };

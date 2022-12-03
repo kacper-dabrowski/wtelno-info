@@ -7,7 +7,5 @@ export const useGoogleAnalytics = (): { injectSnippet: () => JSX.Element } => {
 
     const injectSnippet = useCallback(() => getGoogleAnalyticsSnippet(), []);
 
-    console.log(typeof injectSnippet);
-
     return { injectSnippet };
 };

@@ -6,12 +6,12 @@ import { Container, Highlight, KeyValueList, MainHeader, SecondaryHeader } from 
 import { MarkdownParser } from '../../../shared/markdownConfig';
 
 export const ChurchInfo = ({ currentPage, importantDates, holyMassInfo, parsonData }) => {
-    const importantDatesElements = importantDates?.map?.(({ name, date, _id }) => (
-        <li key={_id}>
-            <Highlight>{name}</Highlight>
-            {date}
-        </li>
-    ));
+    // const importantDatesElements = importantDates?.map?.(({ name, date, _id }) => (
+    //     <li key={_id}>
+    //         <Highlight>{name}</Highlight>
+    //         {date}
+    //     </li>
+    // ));
 
     return (
         <Container>
