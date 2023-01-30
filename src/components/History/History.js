@@ -1,5 +1,5 @@
 import React from 'react';
-import websources from '../../shared/websources';
+import { config } from '../../shared/config';
 import { Container, MainHeader } from '../UniversalStyles/ArticleStyles';
 import HistoryCard from '../Card/HistoryCard';
 import { MarkdownParser } from '../../shared/markdownConfig';
@@ -13,7 +13,7 @@ export const History = ({ pageData }) => {
                           key={char._id}
                           name={char?.name}
                           years={char?.lifeYears}
-                          photo={char?.photo?.url ? `${websources.STRAPI_CMS_URL}${char.photo.url}` : null}
+                          photo={char?.photo?.url ? `${config.STRAPI_CMS_URL}${char.photo.url}` : null}
                           additionalData={char?.additionalInfo}
                           description={char?.description}
                       />

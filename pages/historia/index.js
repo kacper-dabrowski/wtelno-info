@@ -1,12 +1,14 @@
 import { History } from '../../src/components/History/History';
-import { getHistoryPageContent } from '../../src/content/content';
 import { withPageTitle } from '../../src/hoc/withPageTitle';
 import { headersConfig } from '../../src/shared/headers/headers';
+import { PageContentService } from '../../src/service/pageContentService';
 
-const Page = ({ pageData }) => <History pageData={pageData} />;
+const Page = ({ content }) => <History pageData={content} />;
 
 export const getStaticProps = async () => {
-    return getHistoryPageContent();
+    return {
+        props: await new PageContentService('pages/historia.md').getPageData(),
+    };
 };
 
 export default withPageTitle(Page, headersConfig.history);

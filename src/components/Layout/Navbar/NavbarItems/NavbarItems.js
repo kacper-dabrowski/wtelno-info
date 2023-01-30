@@ -4,16 +4,6 @@ import { paths } from '../../../../shared/paths';
 
 const navbarItems = ({ toggleSidedrawer }) => {
     const dropdownLinks = {
-        main: [
-            {
-                title: 'Oświata',
-                path: paths.main.school,
-            },
-            {
-                title: 'Władze',
-                path: paths.main.government,
-            },
-        ],
         church: [
             {
                 title: 'Ogłoszenia parafialne',
