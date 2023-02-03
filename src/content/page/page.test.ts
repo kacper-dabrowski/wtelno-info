@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { PageContentService } from './pageContentService';
+import { PageContentService } from './page';
 
 jest.mock('fs/promises');
 jest.mock('gray-matter');
@@ -19,21 +19,21 @@ describe('service - contentService', () => {
     it('should throw an error to fail build, when given file does not exist', async () => {
         (fs.readFile as jest.Mock).mockRejectedValue(new Error('not found file'));
 
-        await expect(service.getPageData()).rejects.toThrow(new Error('not found file'));
+        await expect(service.getContent()).rejects.toThrow(new Error('not found file'));
     });
 
     it('should throw an error when created at is an invalid date', async () => {
         givenFileHasContent();
         givenInvalidDate();
 
-        await expect(service.getPageData()).rejects.toThrow(new Error('invalid date detected'));
+        await expect(service.getContent()).rejects.toThrow(new Error('invalid date detected'));
     });
 
     it('should return an object of page data', async () => {
         givenFileHasContent();
         givenMarkdownParsingSuccess();
 
-        expect(await service.getPageData()).toEqual({
+        expect(await service.getContent()).toEqual({
             content: 'some-content',
             createdAt: expect.any(Date),
         });
@@ -43,9 +43,9 @@ describe('service - contentService', () => {
         givenFileHasContent();
         givenMarkdownParsingSuccess();
 
-        await service.getPageData();
+        await service.getContent();
 
-        await service.getPageData();
+        await service.getContent();
 
         expect(fs.readFile).toHaveBeenCalledTimes(1);
         expect(fs.readFile).toHaveBeenCalledWith('content/testPost');

@@ -1,15 +1,15 @@
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { NewsContentService } from './newsContentService';
+import { PostsContentService } from './posts';
 
 jest.mock('fs/promises');
 jest.mock('gray-matter');
 
 describe('service - contentService', () => {
-    let service: NewsContentService;
+    let service: PostsContentService;
 
     beforeEach(() => {
-        service = new NewsContentService('testPosts');
+        service = new PostsContentService('testPosts');
     });
 
     afterEach(() => {
@@ -19,7 +19,7 @@ describe('service - contentService', () => {
     it('should throw an error to fail build, when given directory does not exist', async () => {
         givenDirectoryNotFound();
 
-        await expect(service.getPageData()).rejects.toThrow(new Error('not found dir'));
+        await expect(service.getContent()).rejects.toThrow(new Error('not found dir'));
     });
 
     it('should throw an error to fail build, when given file does not exist', async () => {
@@ -27,7 +27,7 @@ describe('service - contentService', () => {
 
         (fs.readFile as jest.Mock).mockRejectedValue(new Error('not found file'));
 
-        await expect(service.getPageData()).rejects.toThrow(new Error('not found file'));
+        await expect(service.getContent()).rejects.toThrow(new Error('not found file'));
     });
 
     it('should throw an error when data photoUrl is something else than optional string', async () => {
@@ -35,7 +35,7 @@ describe('service - contentService', () => {
         givenFileHasContent();
         givenInvalidPhotoUrl();
 
-        await expect(service.getPageData()).rejects.toThrow(
+        await expect(service.getContent()).rejects.toThrow(
             new Error('unknown data passed when reading dirname: testPosts, filename some-file')
         );
     });
@@ -45,7 +45,7 @@ describe('service - contentService', () => {
         givenFileHasContent();
         givenInvalidDate();
 
-        await expect(service.getPageData()).rejects.toThrow(
+        await expect(service.getContent()).rejects.toThrow(
             new Error('invalid created at detected in: testPosts/some-file')
         );
     });
@@ -55,8 +55,14 @@ describe('service - contentService', () => {
         givenFileHasContent();
         givenMarkdownParsingSuccess();
 
-        expect(await service.getPageData()).toEqual([
-            { content: 'some-content', createdAt: expect.any(Date), photoUrl: 'some-url' },
+        expect(await service.getContent()).toEqual([
+            {
+                content: 'some-content',
+                createdAt: expect.any(String),
+                photoUrl: 'some-url',
+                title: 'some-title',
+                path: 'some-file',
+            },
         ]);
     });
 
@@ -65,13 +71,59 @@ describe('service - contentService', () => {
         givenFileHasContent();
         givenMarkdownParsingSuccess();
 
-        await service.getPageData();
+        await service.getContent();
 
-        await service.getPageData();
+        await service.getContent();
 
         expect(fs.readdir).toHaveBeenCalledTimes(1);
         expect(fs.readFile).toHaveBeenCalledTimes(1);
-        expect(fs.readFile).toHaveBeenCalledWith('content/posts/testPosts/some-file');
+        expect(fs.readFile).toHaveBeenCalledWith('content/news/testPosts/some-file');
+    });
+
+    it('should return post with given title', async () => {
+        givenDirectoryContainsFilenames();
+        givenFileHasContent();
+        givenMarkdownParsingSuccess();
+
+        const news = await service.getPostByPath('some-title');
+
+        expect(news.title).toEqual('some-title');
+        expect(news.createdAt).toBeDefined();
+    });
+
+    it('should return undefined, when post with given title does not exist', async () => {
+        givenDirectoryContainsFilenames();
+        givenFileHasContent();
+        givenMarkdownParsingSuccess();
+
+        const news = await service.getPostByPath('some-title123');
+
+        expect(news).not.toBeDefined();
+    });
+
+    it('should fetch posts if posts data not available yet', async () => {
+        givenDirectoryContainsFilenames();
+        givenFileHasContent();
+        givenMarkdownParsingSuccess();
+
+        const news = await service.getPostByPath('some-title');
+
+        expect(news).toBeDefined();
+        expect(fs.readdir).toHaveBeenCalledTimes(1);
+        expect(fs.readFile).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not fetch posts if posts data is available already', async () => {
+        givenDirectoryContainsFilenames();
+        givenFileHasContent();
+        givenMarkdownParsingSuccess();
+
+        await service.getPostByPath('some-title');
+        const news = await service.getPostByPath('some-title');
+
+        expect(news).toBeDefined();
+        expect(fs.readdir).toHaveBeenCalledTimes(1);
+        expect(fs.readFile).toHaveBeenCalledTimes(1);
     });
 });
 
@@ -81,7 +133,7 @@ function givenInvalidPhotoUrl() {
 
 function givenMarkdownParsingSuccess() {
     (matter as unknown as jest.Mock).mockImplementation((input) => ({
-        data: { photoUrl: 'some-url', createdAt: new Date() },
+        data: { photoUrl: 'some-url', createdAt: new Date(), title: 'some-title' },
         content: input,
     }));
 }

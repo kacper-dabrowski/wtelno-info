@@ -1,5 +1,4 @@
 ---
-title: 'Next.js page options and how they work'
 date: '2022-12-03'
 ---
 

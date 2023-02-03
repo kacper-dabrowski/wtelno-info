@@ -1,5 +1,5 @@
 export interface ContentService<T> {
-    getPageData(): Promise<T>;
+    getContent(): Promise<T>;
 }
 
 export interface PageData {

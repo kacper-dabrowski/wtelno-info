@@ -1,15 +1,15 @@
 import fs from 'fs/promises';
 import matter from 'gray-matter';
 import path from 'path';
-import { assertValidDate } from '../shared/utils/date/date';
-import { ContentService, PageData } from './contentService';
+import { assertValidDate } from '../../shared/utils/date/date';
+import { ContentService, PageData } from '../contentService';
 
 export class PageContentService implements ContentService<PageData> {
     private pageData: PageData;
 
     constructor(private fileName: string) {}
 
-    async getPageData(): Promise<PageData> {
+    async getContent(): Promise<PageData> {
         if (!this.pageData) {
             const data = await this.readPostFromFile();
 

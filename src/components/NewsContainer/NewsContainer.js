@@ -10,7 +10,7 @@ const NewsContainer = ({ posts }) => {
             key={post.createdAt}
             title={post.title}
             content={post.content}
-            id={post.id}
+            id={post.path}
             date={post.createdAt}
         />
     ));

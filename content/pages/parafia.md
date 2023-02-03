@@ -1,5 +1,4 @@
 ---
-title: 'Next.js page options and how they work'
 date: '2022-12-03'
 sundayMasses: '8:00,10:00,11:30'
 excludedMasses: '10:00,18:00 (zimą godz. 17:00)'
