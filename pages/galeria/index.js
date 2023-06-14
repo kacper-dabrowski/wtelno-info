@@ -1,7 +1,5 @@
 import { Gallery } from '../../src/components/Gallery/Gallery';
 import { getAlbums } from '../../src/content/content';
-import { withPageTitle } from '../../src/hoc/withPageTitle';
-import { headersConfig } from '../../src/shared/headers/headers';
 import { paths } from '../../src/shared/paths';
 import websources from '../../src/shared/websources';
 
@@ -19,4 +17,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default withPageTitle(Page, headersConfig.gallery.main);
+export default Page;

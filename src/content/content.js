@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { textArrayToImages } from '../shared/utils/textToImage';
 import websources from '../shared/websources';
 import { getPageService } from './pageService';
+import { getChurchService } from './churchService';
 
 export const defaultPageGetStaticPropsFactory = (pageName) => {
     return async () => {

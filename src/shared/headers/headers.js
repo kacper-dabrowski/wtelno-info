@@ -57,4 +57,4 @@ export const headersConfig = {
             description: 'Nie odnaleziono strony',
         },
     },
-} as const;
+};

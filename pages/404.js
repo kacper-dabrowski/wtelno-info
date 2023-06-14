@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import { headersConfig } from '../src/shared/headers/headers';
-import { withPageTitle } from '../src/hoc/withPageTitle';
 
 const StyledNotFound = styled.div`
     color: #655c56;
@@ -19,4 +17,4 @@ const NotFound = () => (
     </StyledNotFound>
 );
 
-export default withPageTitle(NotFound, headersConfig.notFound.main);
+export default NotFound;
