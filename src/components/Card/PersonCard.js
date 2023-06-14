@@ -1,7 +1,7 @@
 import React from 'react';
-import { AddressData, CardContainer, PersonDataImage } from './CardStyles';
-import OrganizationPerson from './OrganizationPeople/OrganizationPerson';
 import ExternalLink from '../ExternalLink';
+import { AddressData, CardContainer } from './CardStyles';
+import OrganizationPerson from './OrganizationPeople/OrganizationPerson';
 
 const Card = ({ name, address, email, telephoneNumber, title, webpage }) => (
     <CardContainer>
@@ -13,16 +13,8 @@ const Card = ({ name, address, email, telephoneNumber, title, webpage }) => (
                     {address.zipcode || address.place ? <p>{address.zipcode || address.place}</p> : null}
                 </li>
             ) : null}
-            {telephoneNumber ? (
-                <li>
-                    <PersonDataImage src={telephoneNumber} alt="nr telefonu" />
-                </li>
-            ) : null}
-            {email ? (
-                <li>
-                    <PersonDataImage src={email} alt="e-mail" />
-                </li>
-            ) : null}
+            {telephoneNumber ? <li>{telephoneNumber}</li> : null}
+            {email ? <li>{email}</li> : null}
             {webpage ? (
                 <li>
                     <ExternalLink href="http://koronowo.pl" target="_blank">

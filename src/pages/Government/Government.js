@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
 import axios from 'axios';
+import React, { Component } from 'react';
 import { ClipLoader } from 'react-spinners';
-import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
-import Card from '../../components/Card/PersonCard';
 import OrganizationCard from '../../components/Card/OrganizationCard';
-import photoApiCall from '../../shared/utils/photoApi/photoApi';
+import Card from '../../components/Card/PersonCard';
+import { Container, MainHeader, SecondaryHeader } from '../../components/UniversalStyles/ArticleStyles';
 
-import websources from '../../shared/websources';
-import { headersConfig } from '../../shared/headers/headers';
 import { withHeaders } from '../../hoc/withHeaders';
+import { headersConfig } from '../../shared/headers/headers';
+import websources from '../../shared/websources';
 
 class Government extends Component {
     state = {
@@ -26,23 +25,13 @@ class Government extends Component {
                 axios.get(`${websources.STRAPI_CMS_URL}/government-member`),
             ]);
             const [mayorDataRequest, governorDataRequest, governmentPeopleRequest] = responseWithContent;
-            const convertedData = await Promise.all([
-                photoApiCall(mayorDataRequest.data.telephoneNumber),
-                photoApiCall(mayorDataRequest.data.email),
-                photoApiCall(governorDataRequest.data.telephoneNumber),
-            ]);
-
-            const [mayorTelephonePhoto, mayorMailPhoto, governorTelephonePhoto] = convertedData;
 
             this.setState({
                 mayorData: {
                     ...mayorDataRequest.data,
-                    telephoneNumber: `${mayorTelephonePhoto}`,
-                    email: `${mayorMailPhoto}`,
                 },
                 governorData: {
                     ...governorDataRequest.data,
-                    telephoneNumber: `${governorTelephonePhoto}`,
                 },
                 governmentPeople: governmentPeopleRequest.data.government,
                 isLoadingFinished: true,
