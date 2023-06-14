@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 export const withHeaders = (WrappedPage, headerConfig) => {
     const { title, description } = headerConfig;
-    return function Component() {
+    return function () {
         return (
             <>
                 <Helmet>

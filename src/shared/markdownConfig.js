@@ -1,27 +1,13 @@
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import {
-    Paragraph,
-    Highlight,
-    SecondaryHeader,
-    ArticleImage,
-    MainHeader,
-} from '../components/UniversalStyles/ArticleStyles';
+import { Paragraph, Highlight, SecondaryHeader, ArticleImage } from '../components/UniversalStyles/ArticleStyles';
 
 const markdownConfig = {
-    components: {
-        h1: MainHeader,
-        p: Paragraph,
-        h2: SecondaryHeader,
+    escapeHtml: false,
+    renderers: {
+        paragraph: Paragraph,
+        heading: SecondaryHeader,
         strong: Highlight,
-        img: ArticleImage,
+        image: ArticleImage,
+        imageReference: ArticleImage,
     },
 };
-
-export const MarkdownParser = ({ children }) => {
-    return (
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} {...markdownConfig} skipHtml={false}>
-            {children}
-        </ReactMarkdown>
-    );
-};
+export default markdownConfig;

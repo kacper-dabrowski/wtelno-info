@@ -25,5 +25,3 @@ yarn-error.log*
 /dev/dockerfiles/api/.env
 /prod/dockerfiles/api/.env
 .env
-/.next
-.swc

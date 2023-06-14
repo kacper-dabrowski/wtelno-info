@@ -1,16 +1,13 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { withRouter } from 'react-router-dom';
 import { StyledNewsThumbnail, PostThumbnailHeader, PostThumbnailDate, StyledSubmitBtn } from './StyledNewsThumbnail';
 import { formatDate } from '../../../shared/utils/date/date';
 
-const NewsThumbnail = ({ title, id, date }) => {
-    const router = useRouter();
+const NewsThumbnail = ({ title, id, history, date }) => {
     const NEWS_PATH = '/aktualnosci';
-
     const displayPost = (postId) => {
-        router.push(`${NEWS_PATH}/${postId}`);
+        history.push(`${NEWS_PATH}/${postId}`);
     };
-
     return (
         <StyledNewsThumbnail>
             <PostThumbnailHeader>{title}</PostThumbnailHeader>
@@ -26,4 +23,4 @@ const NewsThumbnail = ({ title, id, date }) => {
     );
 };
 
-export default NewsThumbnail;
+export default withRouter(NewsThumbnail);

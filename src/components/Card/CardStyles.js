@@ -51,4 +51,7 @@ export const PersonPhoto = styled.div`
     background-position: center;
     background-image: url(${({ photo }) => photo});
 `;
-export const PersonDataImage = styled.img``;
+export const PersonDataImage = styled.img`
+    max-width: 200px;
+    max-height: 15px;
+`;
