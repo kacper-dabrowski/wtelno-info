@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledAlbumLinkContainer = styled.div`
@@ -7,7 +8,7 @@ export const StyledAlbumLinkContainer = styled.div`
         border: none;
     }
 `;
-export const StyledAlbumLink = styled.a`
+export const StyledAlbumLink = styled(Link)`
     display: flex;
     width: 20rem;
     height: 10rem;

@@ -1,12 +1,12 @@
 const paths = {
     main: {
         wtelno: '/',
-        school: '/oswiata',
+        school: '/szkola',
         government: '/wladze',
     },
     church: {
         churchInfo: '/parafia',
-        churchGallery: '/parafia/galeria',
+        churchGallery: '/parafia/galeria-parafialna',
         churchAnnouncements: '/parafia/ogloszenia',
         churchTerms: '/parafia/regulamin-cmentarza',
     },
@@ -17,4 +17,4 @@ const paths = {
     notFound: '/nie-znaleziono-strony',
 };
 
-export { paths };
+export default paths;

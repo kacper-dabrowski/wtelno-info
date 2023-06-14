@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Paragraph, SecondaryHeader } from '../UniversalStyles/ArticleStyles';
-import scissorsIcon from '../../../public/static/util-images/scissors.png';
+import scissorsIcon from '../../assets/util-images/scissors.png';
 
 export const ListDataContainer = styled.div`
     margin: 2rem auto;
